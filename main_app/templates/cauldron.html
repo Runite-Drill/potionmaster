@@ -7,7 +7,92 @@
   />
 </head>
 
-<h1></h1>
-<p>Let's wireframe this page for some potion-mixing!</p>
+<div id="body-content">
+    <br><br>
+    <div id="top-row-wrapper">
+        <div id="profile-container">
+            <div id="dropdown-container">
+                <img src="https://api-private.atlassian.com/users/2dff6b099a5ac2f4baab1bb770899247/avatar" id="profile-icon">
+                
+                <div id="dropDownMenu">
+                    {{user.username}}
+                    <a href="#">My Profile</a>
+                    <a href="#">My Potions</a>
+                    <a href="#">My Ingredients</a>
+                </div>
+            </div>
+        </div>
+        <div id="cauldron-container">
+            <h2>Brew Potion</h2>
+            <img src="https://i.imgur.com/SJx8DwX.png" class="cauldron-image">
+        </div>
+        <div id="recipe-container">
+            <div>
+                <h4>Recipe</h4>
+                <table>
+                    <tr>
+                        <td>Quant.</td>
+                        <td>Ingredient</td>
+                    </tr>
+                    <tr>
+                        <td>Quant.</td>
+                        <td>Ingredient</td>
+                    </tr>
+                    <tr>
+                        <td>Quant.</td>
+                        <td>Ingredient</td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <a href="#" id="concoctBtn" class="btn">Concoct</a>
+        </div>
+    </div>
+    <h3>Ingredients</h3>
+    <div id="bottom-row-wrapper">
+        <div id="empty-container"></div>
+        <div id="ingredients-container">
+            <div class="arrow">
+                <button class="btn"><--</button>
+            </div>
+            <div id="ingredient-1" class="ingredient btn">
+                <h5>Money</h5>
+            </div>
+            <div id="ingredient-2" class="ingredient btn">
+                <!-- <img src="https://209859-635214-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/09/money_values.png"> -->
+                <h5>Happiness</h5>
+            </div>
+            <div id="ingredient-3" class="ingredient btn">
+                <!-- <img src="https://209859-635214-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/09/money_values.png"> -->
+                <h5>Disease</h5>
+            </div>
+            <div class="arrow">
+                <button class="btn">--></button>
+            </div>
+        </div>
+        <div id="add-ingredient-container">
+            <div class="ingredient">
+                <a id="add-ingredient" href="#" class="btn">+</a> 
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    let profileIcon = document.getElementById('profile-icon');
+    let dropdownContainer = document.getElementById('dropdown-container');
+    let dropDownMenu = document.getElementById('dropDownMenu');
+    profileIcon.addEventListener('mouseenter', showDropdown);
+    dropdownContainer.addEventListener('mouseleave', showDropdown);
+
+    function showDropdown(ev) {
+        if (dropDownMenu.style.display === 'flex') {
+            dropDownMenu.style.display = 'none';
+        } else {
+            dropDownMenu.style.display = 'flex';
+        }
+    }
+</script>
 
 {%endblock%}
