@@ -8,6 +8,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def home(request):
     return render(request, 'home.html')
 
+def cauldron(request):
+    return render(request, 'cauldron.html')
+
 def signup(request):
     error_message = ''
     if request.method == 'POST':

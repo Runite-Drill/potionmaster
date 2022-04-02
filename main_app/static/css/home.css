@@ -1,0 +1,15 @@
+body {
+    background-image: url('https://i.imgur.com/SEAgaXs.png');
+    background-size: cover;
+}
+#btn-wrapper {
+    margin-top: 40%;
+    justify-content: center;
+}
+#enterHut {
+    height: 5vh;
+    width: 15vw;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
