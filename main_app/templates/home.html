@@ -1,9 +1,13 @@
-{%extends 'base.html'%} {% block content %}
+{%extends 'base.html'%} 
 
-<h1>TESTING 123</h1>
-<p>Everyone add something simple to this homepage or style it in some way!</p>
-<p>Hi there!</p>
-<p>🐈🐈🐈🐈</p>
-<br /><br /><br />
+{% block content %}
+
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+</head>
+<div id="btn-wrapper" class="valign-wrapper">
+    <a href="{%url 'cauldron'%}" id="enterHut" class="btn">Enter the Witch's Hut</a>
+</div>
 
 {%endblock%}
