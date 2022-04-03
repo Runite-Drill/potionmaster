@@ -1,130 +1,177 @@
 body {
-    background-image: url('https://i.imgur.com/xTsSfig.png');
-    background-size: cover;
+  background-image: url("https://i.imgur.com/xTsSfig.png");
+  background-size: cover;
 }
-/* div {
-    border: 1px solid red;
-} */
+
 h2 {
-    margin-top: 0;
-    text-align: center;
+  margin-top: 0px;
 }
+
 h3 {
-    padding-left: 35%;
+  color: #ea5b6c;
+  text-shadow: 1px 1px 1px black;
+  margin-top: 5px;
+  padding-right: 4%;
 }
 #body-content {
-    color: white;
+  text-align: center;
+  color: black;
 }
-#top-row-wrapper, #bottom-row-wrapper {
-    display: flex;
-    justify-content:space-between;
+#top-row-wrapper,
+#bottom-row-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 #profile-container {
-    width: 10%;
+  width: 20%;
 }
 
 #dropDownMenu {
-    display: none;
-    flex-direction: column;
-    background-color: burlywood;
-    padding: 10px;
-    border-radius: 20px;
-    border: 2px solid black;
+  display: none;
+  flex-direction: column;
+  background-color: #fdfcea;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid black;
 }
 #dropDownMenu > a {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 #profile-icon {
-    width: 60%;
+  width: 60%;
 }
 
 #cauldron-container {
-    width: 50%;
+  width: 50%;
 }
 
 #cauldron-container > img {
-    width: 100%;
+  width: 100%;
 }
 
 #recipe-container {
-    width: 25%;
-    background-color: burlywood;
-    border-radius: 20px;
-    padding: 20px;
-    text-align:center;
-    border: 2px solid black;
-    display: flex;
-    flex-direction: column;
-    justify-content:space-between;
+  width: 25%;
+  font-size: 20px;
+  background-color: #fdfcea;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 #concoctBtn {
-    width: 50%;
-    margin: 0 auto;
+  width: 100%;
+  font-size: 20px;
+  background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif");
+  border: 2px #ea5b6c;
+  border-style: inset;
+  font-family: "Josefin Sans", sans-serif;
+  color: #ea5b6c;
+  text-shadow: 1px 1px 1px black;
 }
 
 #empty-container {
-    width: 10%;
+  width: 10%;
 }
 
 #ingredients-container {
-    width: 60%;
-    display: flex;
-    justify-content: space-evenly;
-    background-color: burlywood;
-    border-radius: 20px;
-    border: 2px solid black;
-    padding: 20px 0;
+  width: 50%;
+  display: flex;
+  margin-bottom: 40px;
+  margin-left: 12%;
+  justify-content: space-evenly;
+  background-color: #fdfcea;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 20px 0;
+  background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif");
 }
 
 #add-ingredient-container {
-    width: 25%;
-    display:flex;
-    align-items: center;
-    justify-content:center;
+  width: 25%;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#add-ingredient-container:hover {
+  background-color: #ea5b6c;
+}
+
+#ctrl-point-icon {
+  font-size: 60px;
 }
 
 .ingredient {
-    width: 180px;
-    height: 180px;
-    background-size: cover;
-    border-radius: 10px;
-    border: 2px solid black;
-    display: flex;
-    align-items: flex-end;
-    justify-content:center;
+  width: 180px;
+  height: 180px;
+  background-size: cover;
+  border-radius: 10px;
+  border: 2px solid black;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .ingredient > h5 {
-    background-color: rgba(42,42,42,0.8);
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid black;
-    font-size: small;
+  background-color: rgba(42, 42, 42, 0.8);
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-size: small;
 }
 
 #ingredient-1 {
-    background-image: url('https://209859-635214-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/09/money_values.png');
+  background-image: url("https://209859-635214-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/09/money_values.png");
 }
 #ingredient-2 {
-    background-image: url('https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/51/441350c22211e4bd49df699111f70c/Wanting-to-be-happy.JPG?auto=format%2Ccompress&dpr=1');
+  background-image: url("https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://coursera-course-photos.s3.amazonaws.com/51/441350c22211e4bd49df699111f70c/Wanting-to-be-happy.JPG?auto=format%2Ccompress&dpr=1");
 }
 #ingredient-3 {
-    background-image: url('https://www.ishn.com/ext/resources/Issues/2019/06-June/ISHN0619_C2_pic.jpg?1559575718');
+  background-image: url("https://www.ishn.com/ext/resources/Issues/2019/06-June/ISHN0619_C2_pic.jpg?1559575718");
 }
 
 .arrow {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #add-ingredient {
-    background-color: wheat;
-    font-size: 200px;
-    margin-top: 50%;
-    height: 100%;
-    width: 100%;
-    line-height: 140px;
-    border-radius: 10px;
+  background-color: #fdfcea;
+  font-size: 200px;
+  margin-top: 50%;
+  height: 100%;
+  width: 100%;
+  line-height: 140px;
+  border-radius: 10px;
+}
+
+.btn {
+  width: 100%;
+}
+
+a {
+  color: black;
+  font-size: 20px;
+}
+
+a:hover {
+  background-color: #ea5b6c;
+  color: black;
+  padding: 2px;
+}
+
+.sparkle {
+  background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif");
+  padding: 10px;
+  border: 2px #ea5b6c;
+  border-style: inset;
+  font-family: "Josefin Sans", sans-serif;
+  color: #ea5b6c;
+  text-shadow: 1px 1px 1px black;
 }

@@ -18,3 +18,16 @@ footer.page-footer {
   padding-top: 0;
   text-align: right;
 }
+
+nav {
+  background-color: purple;
+  padding-top: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.page-footer {
+  background-color: purple;
+  padding-bottom: 20px;
+  font-size: 20px;
+}
