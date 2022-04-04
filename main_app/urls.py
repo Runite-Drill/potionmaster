@@ -7,5 +7,7 @@ urlpatterns = [
     path("cauldron/create/",views.PotionCreate.as_view(), name="potion_create"),
 
     #URL for signup
-    path('accounts/signup/', views.signup, name="signup")
+    path('accounts/signup/', views.signup, name="signup"), 
+
+    path("potions/index/", views.potions_index, name="potions_index") 
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -14,6 +15,11 @@ def home(request):
 def cauldron(request):
     return render(request, 'cauldron.html')
 
+
+def potions_index(request):  
+    potions = Potions.objects.all()
+    return render(request, 'potions/index.html', {'potions': potions})
+
 class PotionCreate(CreateView):
     model = Potions
     fields = ['name','purpose','effects','color']
@@ -21,6 +27,7 @@ class PotionCreate(CreateView):
     def form_valid(self,form):
         form.instance.user = self.request.user
         return super().form_valid(form) #calls form_valid in parent class
+
 
 def signup(request):
     error_message = ''
