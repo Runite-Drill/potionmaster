@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if object %}
+<h1>Edit <span class='teal-text'>{{object.name}}</span></h1>
+{% else %}
+<h1>Add Potion</h1>
+{% endif %}
+
+<form action="" method="post">
+
+    {% csrf_token %}
+    <table>
+        {{form.as_p}}
+    </table>
+    <input type='submit' value="Submit" class='btn'>
+    {% if object %}
+        <a href="{% url 'cauldron' %}">Cancel</a>
+    {% endif %}
+</form>
+
+
+
+
+{% endblock %}
