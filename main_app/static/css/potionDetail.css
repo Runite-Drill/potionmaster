@@ -1,5 +1,5 @@
-.bodyBG { 
-    width:fit-content;
+body {
+  background-color: #fae6b2;
 }
 .centered {
   position: absolute;
@@ -7,3 +7,42 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.nameLabel {
+  margin-top: 0px;
+}
+
+#bookTitle {
+  margin-top: 100px;
+  font-weight: 1000;
+}
+
+.row {
+  border: 2px black solid;
+}
+
+.col {
+  border: 2px black solid;
+}
+
+.potion-detail-container {
+  margin-top: 23%;
+}
+
+#book_pic {
+  z-index: -1;
+  height: 80%;
+  width: 93%;
+}
+
+/* Small screens are defined as having a max-width of 600px
+Medium screens are defined as having a max-width of 992px
+Large screen are defined as having a min-width of 993px
+Extra Large screen are defined as having a min-width of 1200px */
+
+/* @media (max-width: 2175px) and (min-width: 400px) {
+  #book_pic {
+    height: 65%;
+    width: 90%;
+  }
+} */

@@ -11,6 +11,9 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name="signup"), 
 
     path("potion/index/", views.potion_index, name="potion_index"),
-    path("potion/detail/<int:potion_id>", views.potion_detail, name="potion_detail"),
+    path("potion/delete/<int:potion_id>", views.PotionDelete.as_view(), name="potion_delete"),
+    path("potion/detail/edit/<int:pk>", views.PotionUpdate.as_view(), name="potion_edit"),
+    path("potion/detail/<int:pk>", views.potion_detail, name="potion_detail"),
     path("ingredient/index/", views.ingredient_index, name="ingredient_index"),
+    path("ingredient/delete/<int:ingredient_id>", views.IngredientDelete.as_view(), name="ingredient_delete"),
 ]

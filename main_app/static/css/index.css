@@ -1,0 +1,25 @@
+body {
+  background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.title {
+  color: #dfef25;
+  text-decoration: solid;
+  text-align: center;
+}
+
+#createBtn {
+  text-align: center;
+  background-color: #dfef25;
+  border: 1px solid black;
+  border-radius: 45%;
+  justify-items: center;
+  /* padding: 5px; */
+}
+
+.nameLabel {
+  border: 1px solid black;
+}
