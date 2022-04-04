@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Potions, Ingredient
+from .models import Potion, Ingredient
 
 # Create your views here.
 def home(request):
@@ -15,18 +15,28 @@ def home(request):
 def cauldron(request):
     return render(request, 'cauldron.html')
 
+def potion_detail(request):
+    pass
 
-def potions_index(request):  
-    potions = Potions.objects.all()
-    return render(request, 'potions/index.html', {'potions': potions})
+def potion_index(request):  
+    potions = Potion.objects.all()
+    return render(request, 'potion/index.html', {'potions': potions})
+
+def ingredient_index(request):  
+    ingredients = Ingredient.objects.all()
+    return render(request, 'ingredient/index.html', {'ingredients': ingredients})
 
 class PotionCreate(CreateView):
-    model = Potions
+    model = Potion
     fields = ['name','purpose','effects','color']
 
     def form_valid(self,form):
         form.instance.user = self.request.user
         return super().form_valid(form) #calls form_valid in parent class
+
+class IngredientCreate(CreateView):
+    model = Ingredient
+    fields = '__all__'
 
 
 def signup(request):

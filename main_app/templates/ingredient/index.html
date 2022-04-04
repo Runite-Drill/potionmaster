@@ -1,0 +1,12 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+{% for ingredient in ingredients %} 
+    <div class="ingredientPic"> <img src="{{ingredient.image}}">  </div>
+    <div class="nameLabel">{{ingredient.name}}</div>
+
+
+
+{% endfor %}
+{% endblock %}

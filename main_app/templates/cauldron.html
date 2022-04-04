@@ -23,8 +23,8 @@
           <div id="dropDownMenu">
             {{user.username}}
             <a href="#">My Profile</a>
-            <a href="/potions/index">My Potions</a>
-            <a href="#">My Ingredients</a>
+            <a href="{% url 'potion_index' %}">My Potions</a>
+            <a href="{% url 'ingredient_index' %}">My Ingredients</a>
           </div>
         </div>
       </div>
@@ -82,7 +82,7 @@
       </div>
       <div id="add-ingredient-container">
         <div class="ingredient">
-          <a id="add-ingredient" href="#" class="btn" style="color: black"
+          <a id="add-ingredient" href="{%url 'ingredient_create'%}" class="btn" style="color: black"
             ><i class="material-icons" id="ctrl-point-icon">control_point</i></a
           >
         </div>
