@@ -9,9 +9,13 @@ from django.contrib.auth.models import User
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
     image = models.CharField(default=None, blank=True, null=True, max_length=2000) 
+
+
+    def get_absolute_url(self):
+        return reverse('ingredient_index', kwargs = {})
     
 
-class Potions(models.Model):
+class Potion(models.Model):
     name = models.CharField(max_length=100)
     purpose = models.CharField(max_length=1300)
     effects = models.CharField(max_length=1300)
@@ -23,5 +27,5 @@ class Potions(models.Model):
         return self.name 
 
     def get_absolute_url(self):
-        return reverse('cauldron', kwargs = {})
+        return reverse('potion_index', kwargs = {})
 
