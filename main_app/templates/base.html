@@ -1,40 +1,62 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Rubik+Microbe&family=Rubik+Puddles&family=Rubik+Wet+Paint&display=swap"
+      rel="stylesheet"
+    />
     <title>Potionmaster</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="navbar-fixed">
-        <nav>
-            <div class="nav_wrapper">
-                <ul>
-                    <li>
-                        <a href="{%url 'home'%}" class = "left brand-logo">POTIONMASTER</a>
-                    </li>
-                </ul>
-                <ul class="right">
-                    <li>
-                        <a href="#">About</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav_wrapper">
+          <ul>
+            <li>
+              <a href="{%url 'home'%}" class="left brand-logo">POTIONMASTER</a>
+            </li>
+          </ul>
+          <ul class="right">
+            <li>
+              <a href="#">About</a>
+            </li>
+            {% if user.is_authenticated %} Hi {{user.username}}
+            <li>
+              <a href="{%url 'logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="{%url 'signup' %}">Sign up</a>
+            </li>
+            <li>
+              <a href="{%url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
     </header>
 
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
+    <main class="container">{% block content %} {% endblock %}</main>
 
     <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; Plague Doctors Inc. (SEI48 - Team 4)</div>
+      <div class="center" style="padding-top: 20px">
+        All Rights Reserved, &copy; Plague Doctors Inc. (SEI48 - Team 4)
+      </div>
     </footer>
-</body>
+  </body>
 </html>

@@ -1,8 +1,38 @@
-{%extends 'base.html'%} {% block content %}
+{%extends 'base.html'%} {% block content %} {% load static %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+</head>
 
-<h1>TESTING 123</h1>
-<p>Everyone add something simple to this homepage or style it in some way!</p>
-<p>Hi there!</p>
-<br /><br /><br />
-
+<body>
+  <ul class="bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</body>
+<div class="row center">
+  <div class="h1-img-container">
+    <div style="position: relative">
+      <img style="width: 100%" src="https://i.imgur.com/P51dKQT.png" />
+    </div>
+    <div style="position: absolute; top: 40%; left: 0%; right: 0%">
+      <b><h1>POTION MASTER</h1></b>
+    </div>
+    <div class="centered">
+      <a
+        href="{%url 'cauldron'%}"
+        id="enterHut"
+        class="waves-effect waves-light btn-large purple pulse"
+        ><b>Enter the Witch's Hut</b></a
+      >
+    </div>
+  </div>
+</div>
 {%endblock%}
