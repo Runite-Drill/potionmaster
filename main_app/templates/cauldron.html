@@ -58,8 +58,9 @@
     <div id="bottom-row-wrapper">
       <div id="empty-container"></div>
       <div id="ingredients-container">
+        <input value="{{ingredients}}" type="hidden" name="ingredients" id="ingredient-storage">
         <div class="arrow">
-          <button class="btn" style="background-color: #7a6cd6">
+          <button class="btn" style="background-color: #7a6cd6" id="btnLeft">
             <i class="material-icons">arrow_back</i>
           </button>
         </div>
@@ -67,30 +68,28 @@
           <h5>Money</h5>
         </div>
         <div id="ingredient-2" class="ingredient btn">
-          <!-- <img src="https://209859-635214-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/09/money_values.png"> -->
           <h5>Happiness</h5>
         </div>
         <div id="ingredient-3" class="ingredient btn">
-          <!-- <img src="https://209859-635214-1-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/09/money_values.png"> -->
           <h5>Disease</h5>
         </div>
         <div class="arrow">
-          <button class="btn" style="background-color: #7a6cd6">
+          <button class="btn" style="background-color: #7a6cd6" id="btnRight">
             <i class="material-icons">arrow_forward</i>
           </button>
         </div>
       </div>
       <div id="add-ingredient-container">
         <div class="ingredient">
-          <a id="add-ingredient" href="{%url 'ingredient_create'%}" class="btn" style="color: black"
-            ><i class="material-icons" id="ctrl-point-icon">control_point</i></a
-          >
+          <a id="add-ingredient" href="{%url 'ingredient_create'%}" class="btn" style="color: black">
+            <i class="material-icons" id="ctrl-point-icon">control_point</i>
+          </a>
         </div>
       </div>
     </div>
   </div>
-
   <script>
+    //User profile hover menu
     let profileIcon = document.getElementById("profile-icon");
     let dropdownContainer = document.getElementById("dropdown-container");
     let dropDownMenu = document.getElementById("dropDownMenu");
@@ -104,7 +103,78 @@
         dropDownMenu.style.display = "flex";
       }
     }
+
+    //Scroll through ingredients list
+    let leftBtn = document.getElementById("btnLeft");
+    let rightBtn = document.getElementById("btnRight");
+    leftBtn.addEventListener("click", scrollLeft);
+    rightBtn.addEventListener("click", scrollRight);
+
+    let ingredients_raw = document.getElementById("ingredient-storage").value;
+    let i1 = document.getElementById("ingredient-1");
+    let i2 = document.getElementById("ingredient-2");
+    let i3 = document.getElementById("ingredient-3");
+
+
+    console.log(ingredients_raw)
+    console.log(typeof ingredients_raw)
+
+    let ingredients_fullList = [];
+    i_split=ingredients_raw.split(",");
+    for (i_str of i_split) {
+      str_split=i_str.split(": ");
+      for (i2_str of str_split) {
+        i2_str = i2_str.replace("'","");
+        i2_str = i2_str.replace("'","");
+        i2_str = i2_str.replace("[","");
+        i2_str = i2_str.replace("{","");
+        i2_str = i2_str.replace("}","");
+        i2_str = i2_str.replace("]","");
+        i2_str = i2_str.trim();
+        ingredients_fullList.push(i2_str) ;
+      }
+    }
+
+    // let ingredients = JSON.parse(ingredients_raw)
+    console.log(ingredients_fullList)
+
+    let counter = 0
+    let new_obj = {}
+    let ingredients = [];
+    for (i = 0; i<ingredients_fullList.length; i+=2) {
+
+      if (ingredients_fullList[i] === ingredients_fullList[0]) {
+        ingredients.push(new_obj)
+      }
+      // new_obj= {
+      //   ingredients_fullList[i]: ingredients_fullList[i+1]
+      // }
+    }
+    console.log(counter)
+
+    // let ingredients_arr = ingredients.split(',')
+    // for (ingredient of ingredients_arr) {
+    //   console.log(ingredient)
+      
+    //   console.log(JSON.parse(ingredient))
+    // }
+
+    
+
+    function scrollLeft(ev) {
+      console.log('hi')
+    }
+
+    function scrollRight(ev) {
+      console.log('bye')
+    }
+
+
+
+
+
   </script>
+
 
   {%endblock%}
 </body>

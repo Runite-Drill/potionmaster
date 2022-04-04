@@ -1,13 +1,18 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% block content %} {% load static %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" />
+</head>
 
-{% block content %}
+<!-- <img class="bgImage" src="https://i.imgur.com/WbYiDIm.jpg" /> -->
 
-{% for potion in potions %} 
-    <a href="{% url 'potion_detail' potion.id %}">
-    <div class="potionBottlePic"> <img src="https://i.imgur.com/P51dKQT.png">  </div>
-    <div class="nameLabel">{{potion.name}}</div>
+<h1 class="title">MY POTIONS</h1>
+<div id="createBtn">CREATE NEW</div>
+{% for potion in potions %}
+<a href="{% url 'potion_detail' potion.id %}">
+  <div class="potionBottlePic">
+    <img src="https://i.imgur.com/P51dKQT.png" />
+  </div>
+  <div class="nameLabel">{{potion.name}}</div>
 
-
-
-{% endfor %}
-{% endblock %}
+  {% endfor %} {% endblock %}
+</a>

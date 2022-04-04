@@ -10,9 +10,8 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=100)
     image = models.CharField(default=None, blank=True, null=True, max_length=2000) 
 
-
     def get_absolute_url(self):
-        return reverse('ingredient_index', kwargs = {})
+        return reverse('cauldron', kwargs = {})
     
 
 class Potion(models.Model):
@@ -27,5 +26,5 @@ class Potion(models.Model):
         return self.name 
 
     def get_absolute_url(self):
-        return reverse('potion_index', kwargs = {})
+        return reverse('potion_detail', kwargs = {'pk': self.id})
 

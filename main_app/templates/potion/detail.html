@@ -1,26 +1,71 @@
-{% extends 'base.html' %}  
-{% block content %}
-{% load static %}
+{% extends 'base.html' %} {% block content %} {% load static %}
 <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static 'css/potionDetail.css' %}"
-    />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/potionDetail.css' %}"
+  />
 </head>
 
-<div class="centered"> 
-    <img src="https://i.imgur.com/G5ZN1lF.png" style="height:220%; width:220%">
-
-
-
-    <div class="potionBottlePic" style="position: absolute; top: 0%; left: 0%; right: 0%;"> <img src="https://i.imgur.com/P51dKQT.png" style="height:100px;width:100px; transform: translateX(70px)">
-        <div class="nameLabel">{{potion.name}}</div>
-        <div>{{potion.purpose}}</div>
-        <div>{{potion.effects}}</div>
-
-    </div>
-
-
+<div>
+  <img id="book_pic" class="centered" src="https://i.imgur.com/G5ZN1lF.png" />
 </div>
-{% endblock %} 
+
+<div class="row">
+  <div class="col s12">
+    <div class="potion-detail-container">
+      <div class="col s6">
+        <img
+          src="https://i.imgur.com/P51dKQT.png"
+          style="height: 200px; width: 200px"
+          class="potionBottlePic"
+        />
+        <div id="bookTitle">Name: {{potion.name}}</div>
+      </div>
+      <div class="col s6">
+        <div id="bookTitle">RECIPE</div>
+      </div>
+      <div class="col s6">
+        <div class="col s6">
+          <div id="bookTitle">1 QUANTITY</div>
+        </div>
+        <div class="col s6">
+          <div id="bookTitle">1 INGREDIENT</div>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="col s6">
+          <div id="bookTitle">2 QUANTITY</div>
+        </div>
+        <div class="col s6">
+          <div id="bookTitle">2 INGREDIENT</div>
+        </div>
+      </div>
+      <div class="col s6">
+        <div id="bookTitle">Effect: {{potion.effects}}</div>
+      </div>
+      <div class="col s6">
+        <div class="col s6">
+          <div id="bookTitle">3 QUANTITY</div>
+        </div>
+        <div class="col s6">
+          <div id="bookTitle">3 INGREDIENT</div>
+        </div>
+      </div>
+
+      <div class="col s6">
+        <div id="bookTitle">Purpose: {{potion.purpose}}</div>
+      </div>
+      <div class="col s6">
+        <div class="col s6">
+          <div id="bookTitle">4 QUANTITY</div>
+        </div>
+        <div class="col s6">
+          <div id="bookTitle">4 INGREDIENT</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>
