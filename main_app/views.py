@@ -15,9 +15,11 @@ def home(request):
 def cauldron(request):
     return render(request, 'cauldron.html')
 
-def potion_detail(request):
-    pass
+def potion_detail(request, potion_id):
+    potion = Potion.objects.get(id=potion_id)
+    return render(request, 'potion/detail.html', {'potion':potion})
 
+# @login_required
 def potion_index(request):  
     potions = Potion.objects.all()
     return render(request, 'potion/index.html', {'potions': potions})
@@ -26,6 +28,7 @@ def ingredient_index(request):
     ingredients = Ingredient.objects.all()
     return render(request, 'ingredient/index.html', {'ingredients': ingredients})
 
+# @login_required
 class PotionCreate(CreateView):
     model = Potion
     fields = ['name','purpose','effects','color']

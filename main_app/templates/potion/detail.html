@@ -1,0 +1,26 @@
+{% extends 'base.html' %}  
+{% block content %}
+{% load static %}
+<head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/potionDetail.css' %}"
+    />
+</head>
+
+<div class="centered"> 
+    <img src="https://i.imgur.com/G5ZN1lF.png" style="height:220%; width:220%">
+
+
+
+    <div class="potionBottlePic" style="position: absolute; top: 0%; left: 0%; right: 0%;"> <img src="https://i.imgur.com/P51dKQT.png" style="height:100px;width:100px; transform: translateX(70px)">
+        <div class="nameLabel">{{potion.name}}</div>
+        <div>{{potion.purpose}}</div>
+        <div>{{potion.effects}}</div>
+
+    </div>
+
+
+</div>
+{% endblock %} 

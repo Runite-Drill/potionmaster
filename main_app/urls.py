@@ -11,6 +11,6 @@ urlpatterns = [
     path('accounts/signup/', views.signup, name="signup"), 
 
     path("potion/index/", views.potion_index, name="potion_index"),
-    path("potion/detail/<int:pk>", views.potion_detail, name="potion_detail"),
+    path("potion/detail/<int:potion_id>", views.potion_detail, name="potion_detail"),
     path("ingredient/index/", views.ingredient_index, name="ingredient_index"),
 ]

@@ -3,6 +3,7 @@
 {% block content %}
 
 {% for potion in potions %} 
+    <a href="{% url 'potion_detail' potion.id %}">
     <div class="potionBottlePic"> <img src="https://i.imgur.com/P51dKQT.png">  </div>
     <div class="nameLabel">{{potion.name}}</div>
 
