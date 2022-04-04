@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin 
+from .models import Potions, Ingredient
+
+
 
 # Create your views here.
 def home(request):
@@ -10,6 +14,10 @@ def home(request):
 
 def cauldron(request):
     return render(request, 'cauldron.html')
+
+def potions_index(request):  
+    potions = Potions.objects.all()
+    return render(request, 'potions/index.html', {'potions': potions})
 
 def signup(request):
     error_message = ''
