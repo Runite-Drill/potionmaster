@@ -61,5 +61,25 @@
         All Rights Reserved, &copy; Plague Doctors Inc. (SEI48 - Team 4)
       </div>
     </footer>
+    <script>
+      function playSong(song, timeout, currentTime, volume) {
+        const audioElement = document.querySelector("#audioPlayer");
+        if (timeoutID) {
+          clearTimeout(timeoutID);
+        }
+        timeoutID = setTimeout(function () {
+          audioElement.pause();
+        }, timeout);
+        audioElement.src = song;
+        audioElement.currentTime = currentTime;
+        audioElement.volume = volume;
+        setTimeout(function () {
+          audioElement.play();
+        }, 1000);
+      }
+
+      playSong("music/Dream.mp3", 32000, 10000, 0.09);
+      <audio id="audioPlayer"></audio>;
+    </script>
   </body>
 </html>
