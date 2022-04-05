@@ -2,24 +2,53 @@ body {
   background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: contain; 
+  display: flex;
 }
 
-.title {
-  color: #dfef25;
+.title { 
+  display: flexbox;
+  color: #dfef25; 
+  font-size: 140px;
   text-decoration: solid;
-  text-align: center;
+  text-align: center; 
+  font-weight: bolder;
 }
 
-#createBtn {
-  text-align: center;
+#createBtn {  
+  align-items: justify;
+  text-align:center;
   background-color: #dfef25;
-  border: 1px solid black;
-  border-radius: 45%;
-  justify-items: center;
-  /* padding: 5px; */
+  border: 1px solid black; 
+  color: black; 
+  font-weight: bold;
+  border-radius: 10%;
+  justify-items: center;  
+  transform: translateY(70px) translateX(460px); 
+  width: 360px !important; 
+  /* height: 60px; */ 
+  padding: none;
+  font-size: 30px;
 }
 
 .nameLabel {
-  border: 1px solid black;
+  border: 1px solid black; 
+  width: 80px !important;
+}
+
+.potionBottlePic{ 
+  display: inline-flex; 
+  width: 13px;    
+  margin: 9em; 
+  transform: translateY(-250px) translateX(-100px); 
+} 
+
+.leftArrow{ 
+  transform: translateY(260px) translateX(-300px); 
+  width: 25px !important;
+} 
+
+
+.rightArrow{ 
+  transform: translateY(-600px) translateX(1300px);
 }
