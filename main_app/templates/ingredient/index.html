@@ -1,7 +1,43 @@
-{% extends 'base.html' %} {% block content %} {% for ingredient in ingredients%}
-<h1><a href="/potion/index">BACK to Potions </h1>
-  <div class="ingredientPic"><img src="{{ingredient.image}}" /></div>
-  <div class="nameLabel">{{ingredient.name}}</div>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<head>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/ingredientIndex.css' %}"
+  />
+</head>
 
-  {% endfor %} {% endblock %}
-</a>
+<h1 class="title">MY INGREDIENTS</h1>
+<div id="createBtn">
+  <a href="/potion/index"> <p>BACK to Potions</p> </a>
+</div>
+
+<div class="leftArrow">
+  <img
+    src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
+  />
+</div>
+
+<!-- <div class="ingredients"> -->
+  {% for ingredient in ingredients %}
+  <div class="ingredientPic">
+    <a href="{% url 'ingredient_detail' ingredient.id %}"> <img class="ingredientPic" src="{{ingredient.image}}"> </a>
+  </div>
+  {% endfor %}
+
+  <!-- {% for ingredient in ingredients %}
+  <div class="nameLabel" style="text-align: center">
+    <p class="potionName" style="text-align: center">{{ingredient.name}}</p>
+  </div> -->
+ <!-- </div>  -->
+<!-- {% endfor %} -->
+
+
+  <div class="rightArrow">
+    <img
+      src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png"
+    />
+  </div> 
+
+  {% endblock %}
+</div>

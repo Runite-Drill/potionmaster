@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %} 
+<h1><a href="/ingredient/index">BACK to Ingredients </h1></a>
+  <div class="ingredientPic"><img src="{{ingredient.image}}" /></div>
+  <div class="nameLabel">{{ingredient.name}}</div>
+
+<form action="{% url 'add_photo' ingredient.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+    {% csrf_token %}
+    <input type="file" name="photo-file">
+    <br><br>
+    <input type="submit" class="btn" value="Change Photo">
+</form>
+{% endblock %}
+

@@ -7,32 +7,38 @@
 
 <h1 class="title">MY POTIONS</h1>
 <div id="createBtn">
-  <p>CREATE NEW<p>
-</div> 
+  <a href="{%url 'potion_create' %}">
+    <p>CREATE NEW</p>
+    <p></p
+  ></a>
+</div>
 
-<div class="leftArrow">  
-  <img src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"> 
-</div> 
+<div class="leftArrow">
+  <img
+    src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
+  />
+</div>
 
-
-<div class bottles>
-
+<div class="bottles">
   {% for potion in potions %}
 
-    <div class="potionBottlePic">
-       <a href="{% url 'potion_detail' potion.id %}">
-      <img style=height:350px; src="https://i.imgur.com/P51dKQT.png" />
-      <!-- <div class="nameLabel">   
-        <p>{{potion.name}}</p>
-      </div> -->
-    </div>
+  <div class="potionBottlePic">
+    <a href="{% url 'potion_detail' potion.id %}">
+      <img style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
+    </a>
+  </div>
 
-  {% endfor %} 
-  
-  <div class="rightArrow"> 
-    <img src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png"> 
-  </div>  
-  
-  {% endblock %} 
+  <!-- {% endfor %} {% for potion in potions %}
+  <div class="nameLabel" style="text-align: center">
+    <p class="potionName" style="text-align: center">{{potion.name}}</p>
+  </div>
+  {% endfor %} -->
+</div>
 
-</a>
+<div class="rightArrow">
+  <img
+    src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png"
+  />
+</div>
+
+{% endblock %}

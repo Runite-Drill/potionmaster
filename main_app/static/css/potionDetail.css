@@ -1,5 +1,8 @@
 body {
-  background-color: #fae6b2;
+  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
+  background-image: url("https://i.imgur.com/G5ZN1lF_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
+  background: #fffef0;
+  filter: url(#wavy2);
 }
 .centered {
   position: absolute;
@@ -13,56 +16,47 @@ body {
 }
 
 .row {
-  border: 2px black solid;
+  border: 5px #fae6b2;
+  border-style: inset;
   padding: 10px;
 }
 
-.col {
+/* .col {
   border: 2px black solid;
   padding: 10px;
+} */
+
+.container {
+  background-image: url("https://wallpaperaccess.com/full/1611219.jpg");
 }
 
-#book_pic {
+/* { 
   z-index: -1;
   margin-top: 5%;
   height: 95%;
-  width: 95%;
-}
+  width: 95%; */
 
-/* Small screens are defined as having a max-width of 600px
-Medium screens are defined as having a max-width of 992px
-Large screen are defined as having a min-width of 993px
-Extra Large screen are defined as having a min-width of 1200px */
-/* 
-@media (max-width: 1200px) {
-  .container {
-    margin-top: 10%;
-    margin-bottom: 15%;
-    width: 100%;
-  }
-}
+/* @media (max-width: 1099px) and (min-width: 200px) {
+    .container {
+      margin-top: 20%;
+      margin-bottom: 5%;
+      width: 100%;
+    } */
 
-@media (min-width: 993px) {
-  .container {
-    margin-top: 10%;
-    margin-bottom: 15%;
-    width: 80%;
-  }
-} */
-
-@media (min-width: 1100px) and (max-width: 1799px) {
+@media (min-width: 400px) and (max-width: 1799px) {
   .container {
     margin-top: 2%;
     margin-bottom: 5%;
     width: 80%;
+    background-image: url("https://wallpaperaccess.com/full/1611219.jpg");
   }
-  #book_pic {
+  /* #book_pic {
     z-index: -1;
     margin-top: 2%;
     margin-bottom: 15%;
     height: 100%;
     width: 95%;
-  }
+  } */
 }
 
 @media (max-width: 2800px) and (min-width: 1800px) {
@@ -70,18 +64,12 @@ Extra Large screen are defined as having a min-width of 1200px */
     margin-top: 8%;
     margin-bottom: 11%;
     width: 100%;
+    background-image: url("https://wallpaperaccess.com/full/1611219.jpg");
   }
-  #book_pic {
+  /* #book_pic {
     z-index: -1;
     margin-top: 0%;
     height: 80%;
     width: 95%;
-  }
+  } */
 }
-/* @media (min-width: 900px) and (min-height: 600px) {
-  .container {
-    margin-top: 10%;
-    margin-bottom: 11%;
-    width: 88%;
-  }
-} */
