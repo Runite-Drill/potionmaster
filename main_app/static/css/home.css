@@ -137,3 +137,15 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+#app-des-container {
+  position: relative;
+}
+
+#description-card {
+  margin: 0px;
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+}
