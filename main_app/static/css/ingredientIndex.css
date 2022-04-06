@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
   background-position: center;
@@ -24,7 +28,7 @@ body {
   font-weight: bold;
   border-radius: 10%;
   justify-items: center;
-  transform: translateY(-20px) translateX(460px);
+  transform: translateY(0px) translateX(460px);
   width: 360px !important;
   padding: none;
   font-size: 30px;
@@ -43,32 +47,22 @@ body {
   padding: 5px;
 }
 
-.potionName {
-  font-size: 30px;
-  text-align: center;
-  font-weight: bolder;
+.ingredientPic {
+  display: inline;
+  transform: translateY(110px) translateX(40px);
+  width: 230px;
+  height: 230px !important ;
+  margin: 15px;
+  /* border: 2px solid black;  */
+  border-radius: 25%;
+  margin-bottom: 200px;
 }
-
-.potionBottlePic {
-  display: inline-flex;
-  width: 13px;
-  margin: 9em;
-  transform: translateY(-100px) translateX(-100px);
-  margin-bottom: 400px;
-}
-
-/* .ingredientPic {
-  display: inline-flex;
-  width: 13px;
-  margin: 9em;
-  transform: translateY(-240px) translateX(-100px);
-} */
 
 .leftArrow {
-  transform: translateY(260px) translateX(-300px);
+  transform: translateY(490px) translateX(-300px);
   width: 25px !important;
 }
 
 .rightArrow {
-  transform: translateY(-850px) translateX(1300px);
+  transform: translateY(-980px) translateX(1350px);
 }

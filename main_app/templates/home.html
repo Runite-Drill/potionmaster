@@ -1,6 +1,10 @@
 {%extends 'base.html'%} {% block content %} {% load static %}
 <head>
   <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}" />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
 </head>
 
 <body>
@@ -27,11 +31,44 @@
     </div>
     <div class="centered">
       <a
-        href="{%url 'cauldron'%}"
+        href="{%url 'potion_index'%}"
         id="enterHut"
         class="waves-effect waves-light btn-large purple pulse"
         ><b>Enter the Witch's Hut</b></a
       >
+    </div>
+  </div>
+</div>
+
+<div class="container" id="app-des-container">
+  <div class="row center">
+    <div class="col s12">
+      <div class="card small purple" id="description-card" class="centered">
+        <div class="card-image">
+          <img
+            src="https://media3.giphy.com/media/zW0n7AIWG4ka4/giphy.gif?cid=ecf05e473pbwf7332veepb4175uem8bwea1uhjdavqydsanc&rid=giphy.gif&ct=g"
+          />
+          <span class="card-title"
+            ><p style="text-align: center">What is Potion Master?</p></span
+          >
+        </div>
+        <div class="card-content white-text">
+          <span class="card-title activator">Click Me!</span>
+          <p><a href="#"></a></p>
+        </div>
+        <div class="card-reveal" style="background-color: purple">
+          <span
+            class="card-title"
+            style="text-align: center; color: white; background-color: purple"
+          >
+            <p>
+              Welcome to potion master! Create your own ingredients and concoct
+              the potion of your dreams!
+            </p>
+            <i class="material-icons right" style="color: white">cancel</i>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
