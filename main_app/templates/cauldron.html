@@ -110,15 +110,15 @@
     leftBtn.addEventListener("click", scrollLeft);
     rightBtn.addEventListener("click", scrollRight);
 
-    let ingredients_raw = document.getElementById("ingredient-storage").value;
-    let i1 = document.getElementById("ingredient-1");
-    let i2 = document.getElementById("ingredient-2");
-    let i3 = document.getElementById("ingredient-3");
+    //read ingredients from database and set defaults
+    let ingredients_raw = document.getElementById("ingredient-storage").value; //string of all ingredient properties passed from Django->HTML->JS
+    // let i1 = document.getElementById("ingredient-1");
+    // let i2 = document.getElementById("ingredient-2");
+    // let i3 = document.getElementById("ingredient-3");
 
-
-    console.log(ingredients_raw)
-    console.log(typeof ingredients_raw)
-
+    //Custom-made parser to read the ingredient string and split into seperate objects
+    //Read string, cut out the BS and parse keys & values into an array
+    //Loads all data into a single array:[key,value,key,value,key,value,...]
     let ingredients_fullList = [];
     i_split=ingredients_raw.split(",");
     for (i_str of i_split) {
@@ -131,42 +131,70 @@
         i2_str = i2_str.replace("}","");
         i2_str = i2_str.replace("]","");
         i2_str = i2_str.trim();
-        ingredients_fullList.push(i2_str) ;
+        ingredients_fullList.push(i2_str);
       }
     }
 
-    // let ingredients = JSON.parse(ingredients_raw)
-    console.log(ingredients_fullList)
-
-    let counter = 0
+    //End array with starting key to allow parser below to successfully complete each object
+    ingredients_fullList.push(ingredients_fullList[0]);
+    //Parse the array and move key-value apirs into objects
     let new_obj = {}
     let ingredients = [];
-    for (i = 0; i<ingredients_fullList.length; i+=2) {
-
-      if (ingredients_fullList[i] === ingredients_fullList[0]) {
-        ingredients.push(new_obj)
+    for (i = 0; i<ingredients_fullList.length+1; i+=2) {
+      if ((ingredients_fullList[i] === ingredients_fullList[0]) && (i > 0)) {
+        //data keys are repeating, so begin a new object
+        ingredients.push(new_obj);
+        new_obj = {};
       }
-      // new_obj= {
-      //   ingredients_fullList[i]: ingredients_fullList[i+1]
-      // }
+      //add key and value to object
+      key=ingredients_fullList[i];
+      new_obj[key] = ingredients_fullList[i+1];
     }
-    console.log(counter)
 
-    // let ingredients_arr = ingredients.split(',')
-    // for (ingredient of ingredients_arr) {
-    //   console.log(ingredient)
-      
-    //   console.log(JSON.parse(ingredient))
-    // }
+    // console.log(ingredients)
 
-    
+    //Set default ingredients to page
+    let displayedIngredients = [0,1,2];
+    displayIngredients(displayedIngredients);
+
+    function displayIngredients(indices) {
+      let i1 = document.getElementById("ingredient-1");
+      let i2 = document.getElementById("ingredient-2");
+      let i3 = document.getElementById("ingredient-3");
+      if (ingredients[indices[0]]) {
+        i1.style.backgroundImage = "url("+ingredients[indices[0]].image+")";
+        i1.innerHTML = '<h5>'+ingredients[indices[0]].name+'</h5>';
+      }
+      if (ingredients[indices[1]]) {
+        i2.style.backgroundImage = "url("+ingredients[indices[1]].image+")";
+        i2.innerHTML = '<h5>'+ingredients[indices[1]].name+'</h5>';
+      }
+      if (ingredients[indices[2]]) {
+        i3.style.backgroundImage = "url("+ingredients[indices[2]].image+")";
+        i3.innerHTML = '<h5>'+ingredients[indices[2]].name+'</h5>';
+      }
+    }
 
     function scrollLeft(ev) {
-      console.log('hi')
+      displayedIngredients=displayedIngredients.map(v=>{
+        v+=1;
+        if (v > displayedIngredients.length) {
+          v -= displayedIngredients.length + 1;
+        }
+        return v
+      });
+      displayIngredients(displayedIngredients);
     }
 
     function scrollRight(ev) {
-      console.log('bye')
+      displayedIngredients=displayedIngredients.map(v=>{
+        v-=1;
+        if (v < 0) {
+          v += displayedIngredients.length + 1;
+        }
+        return v
+      });
+      displayIngredients(displayedIngredients);
     }
 
 

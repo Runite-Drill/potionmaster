@@ -17,17 +17,12 @@ def cauldron(request):
     ingredients = Ingredient.objects.all()
     ingredient_list = []
     for ingredient in ingredients:
-        # print(ingredient.id)
-        # print(ingredient.name)
-        # print(ingredient.image)
         new_ingredient={
             "id" : ingredient.id,
             "name" : ingredient.name,
             "image" : ingredient.image,
         }
         ingredient_list.append(new_ingredient)
-    # ingredientsDict = {'ingredients' : list(ingredients)}
-    print(ingredient_list)
     return render(request, 'cauldron.html', {'ingredients': ingredient_list})
 
 def potion_detail(request, pk):
