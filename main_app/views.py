@@ -13,12 +13,13 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
+import tkinter.messagebox
+from threading import Thread
 
 
 S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/'
 BUCKET = 'potionmaster'
+
 
 
 # Create your views here.
@@ -110,10 +111,11 @@ def ingredient_create_post(request):
         return redirect('ingredient_index')
 
     except:
-        root = tk.Tk()
-        root.withdraw()
-        messagebox.showerror("Duplicate Ingredient Name",
+        root = tkinter.Tk()
+        tkinter.messagebox.showerror("Duplicate Ingredient Name",
                              "Duplicate Ingredient Name.\n Please try again")
+        root.withdraw()
+        root.mainloop()
         return redirect('ingredient_get')
 
 
@@ -178,3 +180,9 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+
+# t = Thread(target=ingredient_create_post)
+# t.setDaemon(True)
+# t.start()
+# 
