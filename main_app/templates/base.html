@@ -40,7 +40,10 @@
             </li>
             {% if user.is_authenticated %} Hi {{user.username}}
             <li>
-              <a href="{%url 'potion_create' %}">Create Potion</a>
+              <a href="{%url 'potion_index' %}">My Potions</a>
+            </li>
+            <li>
+              <a href="{%url 'ingredient_index' %}">All Ingredients</a>
             </li>
             <li>
               <a href="{%url 'logout' %}">Logout</a>

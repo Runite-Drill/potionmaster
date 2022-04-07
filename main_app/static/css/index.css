@@ -1,8 +1,16 @@
+a { 
+  text-decoration: none;
+  color: black;
+}
+
+.container { width: 100%}
+
+
 body {
   background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   display: flex;
 }
 
@@ -31,16 +39,14 @@ body {
 }
 
 .nameLabel {
-  display: inline-flex;
   border: 1px solid black;
-  /* width: 90px !important; */
+  width: 90px !important;
   background-color: #fae6b2;
-  transform: translateY(-220px) translateX(-510px);
-  margin: 90px;
+  /* transform: translateY(-80px) translateX(-0px); */
+  /* margin: 90px; */
   align-items: center;
   height: 60px !important;
   border-radius: 25%;
-  padding: 5px;
 }
 
 .potionName {
@@ -50,25 +56,89 @@ body {
 }
 
 .potionBottlePic {
-  display: inline-flex;
+  display: inline;
   width: 13px;
   margin: 9em;
-  transform: translateY(-100px) translateX(-100px);
-  margin-bottom: 400px;
+  /* transform: translateY(-10px) */
+}  
+
+.potionName{ 
+  margin: 0 auto;
 }
 
-/* .ingredientPic {
-  display: inline-flex;
-  width: 13px;
-  margin: 9em;
-  transform: translateY(-240px) translateX(-100px);
-} */
+.nameAndIcon {  
+  display: flex;
+  flex-direction: column ; 
+  transform: translateY(-20px);
+  align-items: center; 
+} 
+
+.nameAndIcon2 {  
+  display: flex;
+  flex-direction: column ; 
+  transform: translateY(-25px);
+  align-items: center; 
+} 
+
+ 
+.deleteButton { 
+  border: 1px solid black;
+  width: 90px !important;
+  background-color: #f14b53;
+  /* transform: translateY(-80px) translateX(-0px); */
+  /* margin: 90px; */
+  text-align: center;
+  border-radius: 25%;
+  padding: 5px;   
+}
 
 .leftArrow {
-  transform: translateY(260px) translateX(-300px);
+  transform: translateY(240px) translateX(-300px);
   width: 25px !important;
 }
 
 .rightArrow {
-  transform: translateY(-850px) translateX(1300px);
+  transform: translateY(-650px) translateX(1300px);
+} 
+
+#bottleRow1 { 
+  transform: translateY(20px);
+} 
+
+#bottleRow2 { 
+  transform: translateY(20px);
+}
+
+.row1 { 
+  transform: translateX(-70px) translateY(100px);
+} 
+
+.row2 { 
+  transform: translateX(-70px) translateY(180px); 
+} 
+
+.column {
+  float: left; 
+  display: inline-flex;
+}
+
+.left{ 
+  width: 10%; 
+  transform: translateX(-350px) translateY(400px);
+}  
+
+.right{ 
+  width: 10%;  
+  transform: translateX(250px) translateY(-850px);
+} 
+
+.middle { 
+  width: 100%; 
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

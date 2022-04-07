@@ -1,13 +1,14 @@
-* {
-  box-sizing: border-box;
+a { 
+  text-decoration: none;
+  color: black;
 }
 
 body {
   background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
-  display: flex;
+  background-size: cover;
+  display: flex; 
 }
 
 .title {
@@ -19,7 +20,26 @@ body {
   font-weight: bolder;
 }
 
-#createBtn {
+.createBtn {
+  align-items: justify;
+  text-align: center;
+  background-color: #dfef25;
+  border: 1px solid black;
+  color: black;
+  font-weight: bold;
+  border-radius: 10%;
+  justify-items: center;
+  transform: translateY(0px) translateX(460px);
+  width: 360px !important;
+  padding: none;
+  font-size: 30px; 
+}  
+
+#buttons { 
+  display: inline;
+}
+
+#backBtn {
   align-items: justify;
   text-align: center;
   background-color: #dfef25;
@@ -39,30 +59,108 @@ body {
   border: 1px solid black;
   /* width: 90px !important; */
   background-color: #fae6b2;
-  transform: translateY(-220px) translateX(-510px);
-  margin: 90px;
+  /* transform: translateY(-45px) translateX(50px); */
+  margin: 0 auto;
   align-items: center;
   height: 60px !important;
   border-radius: 25%;
-  padding: 5px;
+  padding: 5px; 
+  min-width: 100px; 
+  text-align: center;
 }
 
 .ingredientPic {
   display: inline;
-  transform: translateY(110px) translateX(40px);
+  /* transform: translateY(-50px) translateX(40px); */
   width: 230px;
   height: 230px !important ;
   margin: 15px;
   /* border: 2px solid black;  */
   border-radius: 25%;
-  margin-bottom: 200px;
+  /* margin-bottom: 200px; */ 
+  align-items: center;
+}  
+
+.ingredients { 
+  display:inline-flex;
+} 
+
+.potionName{ 
+  margin: 0 auto;
 }
 
 .leftArrow {
-  transform: translateY(490px) translateX(-300px);
+  transform: translateY(150px) translateX(-300px);
   width: 25px !important;
 }
 
-.rightArrow {
-  transform: translateY(-980px) translateX(1350px);
+/* .rightArrow {
+  transform: translateY(-350px) translateX(1350px);
+} */
+
+#bottleRow1 { 
+  transform: translateY(20px);
+} 
+
+#bottleRow2 { 
+  transform: translateY(20px);
+}
+
+.row1 { 
+  transform: translateX(-15px) translateY(110px);
+} 
+
+.row2 { 
+  transform: translateX(-15px) translateY(175px);
+} 
+
+.deleteButton { 
+  border: 1px solid black;
+  width: 90px !important;
+  background-color: #f14b53;
+  /* transform: translateY(-80px) translateX(-0px); */
+  /* margin: 90px; */
+  text-align: center;
+  border-radius: 25%;
+  padding: 5px;   
+} 
+
+.nameAndIcon {  
+  display: flex;
+  flex-direction: column ; 
+  transform: translateY(-90px); 
+  align-items: center;
+} 
+
+.nameAndIcon2 {  
+  display: flex;
+  flex-direction: column ; 
+  transform: translateY(-10px);
+  align-items: center; 
+}  
+
+.column {
+  float: left; 
+  display: inline-flex;
+}
+
+.left{ 
+  width: 10%; 
+  transform: translateX(-320px) translateY(180px);
+}  
+
+.right{ 
+  width:10%;
+  transform: translateX(220px) translateY(-780px);
+}   
+
+.middle { 
+  width: 100%; 
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
