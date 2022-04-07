@@ -281,21 +281,25 @@
       
       function editRecipeIngredient(ev) {
         console.log('EDITING INGREDIENT!')
-        let rowNum = ev.target.parentNode.rowIndex;
+        let rowNum = ev.target.parentNode.parentNode.rowIndex;
         let validEntry = false;
         let numAdded = 0;
         while (!validEntry) {
-          numAdded = Number(prompt('How much '+potionIngredients[rowNum-1].ingredient.name.toUpperCase()+' do you want to add?'))
+          numAdded = Number(prompt('How much '+potionIngredients[rowNum].ingredient.name.toUpperCase()+' do you want to add?'))
           if (numAdded == 0) {return} //cancel button
           if (numAdded > 0) { validEntry = true} //valid number
-        potionIngredients[rowNum-1].quantity = numAdded;
         }
+        potionIngredients[rowNum-1].quantity = numAdded;
+
+        ev.target.parentNode.parentNode.firstChild.innerText = numAdded + ' parts';
       }
       
       function deleteRecipeIngredient(ev) {
-        let rowNum = ev.target.parentNode.rowIndex;
+        let rowNum = ev.target.parentNode.parentNode.rowIndex;
+        console.log(rowNum)
         potionIngredients.splice(rowNum-1,1)
         recipeTable.deleteRow(rowNum);
+        console.log(potionIngredients)
       }
 
 
