@@ -1,25 +1,28 @@
-{% extends 'base.html' %}
-{% block content %}
-
-{% if object %}
-<h1>Edit <span class='teal-text'>{{object.name}}</span></h1>
+{% extends 'base.html' %} {% block content %} {% if object %}
+<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
 <h1>Add Ingredient</h1>
 {% endif %}
 
 <form action="" method="post">
-
-    {% csrf_token %}
-    <table>
-        {{form.as_p}}
-    </table>
-    <input type='submit' value="Submit" class='btn'>
-    {% if object %}
-        <a href="{% url 'cauldron' %}">Cancel</a>
-    {% endif %}
+  {% csrf_token %}
+  <table>
+    {{form.as_p}}
+  </table>
+  <input
+    type="submit"
+    value="Submit"
+    class="btn-large"
+    style="
+      color: white;
+      font-family: Josefin Sans, sans-serif;
+      background-color: #ea5b6c;
+      font-size: 18px;
+    "
+  />
+  {% if object %}
+  <a href="{% url 'cauldron' %}">Cancel</a>
+  {% endif %}
 </form>
-
-
-
 
 {% endblock %}

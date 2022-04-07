@@ -1,9 +1,9 @@
-body {
-  box-shadow: 2px 3px 20px black, 0 0 60px #8a4d0f inset;
-  background-image: url("https://i.imgur.com/G5ZN1lF_d.jpg?maxwidth=520&shape=thumb&fidelity=high");
-  background: #fffef0;
-  filter: url(#wavy2);
-}
+/* body {
+  background-image: url("https://wallpaperaccess.com/full/5053299.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+} */
 .centered {
   position: absolute;
   top: 50%;
@@ -16,60 +16,14 @@ body {
 }
 
 .row {
-  border: 5px #fae6b2;
-  border-style: inset;
+  /* border: 2px solid black; */
   padding: 10px;
 }
 
-/* .col {
-  border: 2px black solid;
-  padding: 10px;
-} */
-
-.container {
-  background-image: url("https://wallpaperaccess.com/full/1611219.jpg");
-}
-
-/* { 
-  z-index: -1;
-  margin-top: 5%;
-  height: 95%;
-  width: 95%; */
-
-/* @media (max-width: 1099px) and (min-width: 200px) {
-    .container {
-      margin-top: 20%;
-      margin-bottom: 5%;
-      width: 100%;
-    } */
-
-@media (min-width: 400px) and (max-width: 1799px) {
-  .container {
-    margin-top: 2%;
-    margin-bottom: 5%;
-    width: 80%;
-    background-image: url("https://wallpaperaccess.com/full/1611219.jpg");
-  }
-  /* #book_pic {
-    z-index: -1;
-    margin-top: 2%;
-    margin-bottom: 15%;
-    height: 100%;
-    width: 95%;
-  } */
-}
-
-@media (max-width: 2800px) and (min-width: 1800px) {
-  .container {
-    margin-top: 8%;
-    margin-bottom: 11%;
-    width: 100%;
-    background-image: url("https://wallpaperaccess.com/full/1611219.jpg");
-  }
-  /* #book_pic {
-    z-index: -1;
-    margin-top: 0%;
-    height: 80%;
-    width: 95%;
-  } */
+#recipe-container {
+  background-image: url("https://wallpaperaccess.com/full/5053299.jpg");
+  /* background-image: url("https://i.ibb.co/23bfGZd/depositphotos-99364234-stock-illustration-vintage-book-with-blank-pages-removebg-preview.png"); */
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
 }

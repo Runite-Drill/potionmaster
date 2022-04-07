@@ -7,37 +7,68 @@
   />
 </head>
 
-<h1 class="title">MY INGREDIENTS</h1>
-<div id="createBtn">
-  <a href="/potion/index"> <p>BACK to Potions</p> </a>
-</div>
-
-<div class="leftArrow">
-  <img
-    src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
-  />
-</div>
-
-<!-- <div class="ingredients"> -->
-  {% for ingredient in ingredients %}
-  <div class="ingredientPic">
-    <a href="{% url 'ingredient_detail' ingredient.id %}"> <img class="ingredientPic" src="{{ingredient.image}}"> </a>
+<h1 class="title">MY INGREDIENTS</h1>  
+<div id="buttons">
+  <div class="createBtn">
+    <a href="{%url 'ingredient_get'%}">Create new ingredient</a>  
   </div>
-  {% endfor %}
-
-  <!-- {% for ingredient in ingredients %}
-  <div class="nameLabel" style="text-align: center">
-    <p class="potionName" style="text-align: center">{{ingredient.name}}</p>
-  </div> -->
- <!-- </div>  -->
-<!-- {% endfor %} -->
+  <div class="createBtn">
+    <a href="/potion/index"> <p>BACK to Potions</p> </a> 
+  </div>
+</div>
 
 
-  <div class="rightArrow">
+<div class="row"> 
+
+  <div class="column left">
     <img
-      src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png"
-    />
-  </div> 
+      src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
+    /> 
+  </div>
 
-  {% endblock %}
+  <div class="column middle">
+    <table>
+      <tr class="row1">
+        {% for ingredient in ingredients %}
+        {% if forloop.counter0 < 4 %}
+        <td>
+              <div class="nameAndIcon">
+                <img class="ingredientPic" src="{{ingredient.image}}" />
+                <p class="nameLabel potionName" style="text-align: center">
+                  {{ ingredient.name }}
+               </p>
+               <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a> </div>
+             </div>
+             </a>
+        </td>
+        {% endif %}
+        {% endfor %}
+      </tr>
+
+      <tr class="row2">
+        {% for ingredient in ingredients %}
+        {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
+          <td>
+                <div class="nameAndIcon2">
+                  <img class="ingredientPic" src="{{ingredient.image}}" />
+                  <p class="nameLabel potionName" style="text-align: center">
+                   {{ ingredient.name }}
+                 </p> 
+                  <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a> </div>
+                </div>
+              </a>
+            </td>
+        {% endif %}
+        {% endfor %}
+      </tr> 
+    </table>  
+  </div>
+
+  <div class="column right">
+    <img src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png" 
+    />
+  </div>
+
+
+  {% endblock %} 
 </div>

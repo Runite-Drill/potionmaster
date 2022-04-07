@@ -2,15 +2,38 @@
 <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
 <h1>Add Potion</h1>
+<h4 style="font-family: Josefin Sans, sans-serif">
+  Are you sure you want to create a new potion?
+</h4>
 {% endif %}
-<p>Are you sure you want to create a new potion?</p>
 <form action="" method="post">
   {% csrf_token %}
   <table>
     {{form.as_p}}
   </table>
-  <input type="submit" value="Yes!" class="btn" />
-  <a href="{% url 'potion_index' %}">Cancel</a>
+  <input
+    type="submit"
+    value="Yes!"
+    class="btn-floating btn-large"
+    style="
+      font-family: Josefin Sans, sans-serif;
+      background-color: #c04bc2;
+      font-size: 18px;
+    "
+  />
+  <a href="{% url 'potion_index' %}"
+    ><button
+      class="btn-large"
+      style="
+        color: white;
+        font-family: Josefin Sans, sans-serif;
+        background-color: #ea5b6c;
+        font-size: 18px;
+      "
+    >
+      Cancel
+    </button></a
+  >
 </form>
 
 {% endblock %}

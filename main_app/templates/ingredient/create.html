@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Add Ingredient</h1>
+
+<form
+  action="{% url 'ingredient_post' %}"
+  enctype="multipart/form-data"
+  method="POST"
+>
+  {% csrf_token %}
+  <label> Name </label>
+  <input name="name" placeholder="Ingredient name" />
+  <br />
+  <label> Image </label>
+  <input type="file" name="photo-file" />
+  <br /><br />
+  <input type="submit" value="Submit" class="btn" />
+  <a href="{% url 'ingredient_index' %}">Cancel</a>
+</form>
+
+{% endblock %}

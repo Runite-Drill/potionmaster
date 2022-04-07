@@ -7,43 +7,57 @@
   />
 </head>
 
-<div id="book_pic">
-</div>
-
-  <div class="container">
-    <div class="row center">
-      <div class="col s6">
-        <div class="row">
-          
-          <img
+<div class="container" id="recipe-container">
+  <div class="row center">
+    <div class="col s6">
+      <div class="row">
+        <img
           src="https://i.imgur.com/P51dKQT.png"
           style="height: 200px; width: 200px"
           class="potionBottlePic"
-        /><span style="font-size: 30px">
-          {{potion.name}}</span>
-        </div>
-        <div class="row"><span style="font-size: 30px">
-          {{potion.effects}}</span>
-        </div>
-        
-        <div class="row"><span style="font-size: 30px">
-          {{potion.purpose}}</span>
-        </div>
-        
+        />
+        <div class="row"><span style="font-size: 30px;font-family: 'Great Vibes', cursive;
+          letter-spacing: 2px;text-shadow: 1px 1px 2px brown">Name:</span> <span style="font-size: 30px;text-shadow: 1px 1px 2px brown">{{potion.name}}</span>
       </div>
-      <div class="col s6">
-        <div class="row">
-          <span style="font-size: 40px;font-family: 'Great Vibes', cursive;letter-spacing:2px">Recipe</span>
-        </div>
-        {% for ingredient in potion.all %}
-        <div class="row">
-          <div class="col s6"><span style="font-size: 20px">QUANTITY</span></div>
-          <div class="col s6"><span style="font-size: 20px">INGREDIENT{{ingredient.name}}</span></div>
-        </div>
-        </div>
+      <div class="row">
+        <span style="font-size: 30px;font-family: 'Great Vibes', cursive;
+          letter-spacing: 2px; text-shadow: 1px 1px 2px brown"> Effects:</span> <span style="font-size: 30px;text-shadow: 1px 1px 2px brown">{{potion.effects}}</span>
+          </div>
+
+      <div class="row">
+        <span style="font-size: 30px;font-family: 'Great Vibes', cursive;
+          letter-spacing: 2px;text-shadow: 1px 1px 2px brown">Purpose:</span> <span style="font-size: 30px;text-shadow: 1px 1px 2px brown">{{potion.purpose}}</span>
       </div>
     </div>
   </div>
-  {% endfor%}
-  {% endblock %}
+    <div class="col s6">
+      <div class="row">
+        <span
+          style="
+            font-size: 50px;
+            font-family: 'Great Vibes', cursive;
+            letter-spacing: 2px;text-shadow: 1px 1px 2px brown">Recipe</span>
 
+        <div class="row">
+          <a href="{%url 'potion_delete' potion.id %}"><button class="btn-large" style="background-color: #6e0c71; margin: 2px;font-family: 'Josefin Sans', sans-serif;">Delete</button></a>
+          <a href="{%url 'potion_edit' potion.id %}"><button class="btn-large btn-floating" style="background-color: #6e0c71; margin: 2px;font-family: 'Josefin Sans', sans-serif;">Edit</button></a>
+        </div>
+      </div>
+
+      <table>
+        <tr>
+          {% for recipe in potion.recipe_set.all %}
+          <tr>
+          <td>
+            <span style="font-size: 18px;text-shadow: 1px 1px 2px brown"><b>QUANTITY: </span><span style="font-size: 25px;text-shadow: 1px 1px midnightblue"> {{recipe.quantity}}</b></span>
+            <td>
+            <span style="font-size: 18px;text-shadow: 1px 1px 2px brown"
+              ><b>INGREDIENT: </span><span style="font-size: 25px;text-shadow: 1px 1px midnightblue"> {{recipe.ingredient.name}}</b></span
+            ></td>
+          </td>
+        </tr>
+          {% endfor %}  
+        </tr>
+      </table>
+ {% endblock %}
+</div>

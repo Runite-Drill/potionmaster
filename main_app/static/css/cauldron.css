@@ -5,13 +5,14 @@
 
 h2 {
   margin-top: 0px;
+  padding-right: 10%;
 }
 
 h3 {
   color: #ea5b6c;
   text-shadow: 1px 1px 1px black;
   margin-top: 5px;
-  padding-right: 4%;
+  padding-right: 10%;
 }
 #body-content {
   text-align: center;
@@ -79,10 +80,9 @@ h3 {
 }
 
 #ingredients-container {
-  width: 50%;
+  width: 75%;
   display: flex;
   margin-bottom: 40px;
-  margin-left: 12%;
   justify-content: space-evenly;
   background-color: #fdfcea;
   border-radius: 20px;
@@ -174,4 +174,10 @@ a:hover {
   font-family: "Josefin Sans", sans-serif;
   color: #ea5b6c;
   text-shadow: 1px 1px 1px black;
+}
+
+.cauldron-image {
+  width: 100%;
+  height: auto;
+  padding-right: 10%;
 }
