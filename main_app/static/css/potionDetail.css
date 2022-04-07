@@ -23,7 +23,7 @@
 #recipe-container {
   background-image: url("https://wallpaperaccess.com/full/5053299.jpg");
   /* background-image: url("https://i.ibb.co/23bfGZd/depositphotos-99364234-stock-illustration-vintage-book-with-blank-pages-removebg-preview.png"); */
-  background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
+  background-repeat: repeat;
+  height: 80%;
+  width: 80%;
 }

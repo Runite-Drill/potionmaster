@@ -8,7 +8,7 @@
 <form method="POST" action="{% url 'signup' %}">
   {%csrf_token%} {{form.as_p}}
   <input type="submit" value="signup" class="btn" />
-  <input type="hidden" name="text" value="{{next}}" />
+  <input type="hidden" name="next" value="{{next}}" />
   <a href="{%url 'home' %}">Cancel</a>
 </form>
 {%endblock%}

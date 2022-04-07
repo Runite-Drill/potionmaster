@@ -17,6 +17,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 
+
 S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/'
 BUCKET = 'potionmaster'
 
@@ -100,6 +101,9 @@ class PotionCreate(LoginRequiredMixin, CreateView):
 def ingredient_create_get(request):
     return render(request, 'ingredient/create.html')
 
+def ingredient_create_get_cauldron(request, potion_id):
+    return render(request, 'ingredient/create_cauldron.html', {'potion_id':potion_id})
+
 
 @login_required
 def ingredient_create_post(request):
@@ -108,18 +112,28 @@ def ingredient_create_post(request):
         photo_file = request.FILES.get('photo-file', None)
         add_photo(photo_file, ingredient.id)
         return redirect('ingredient_index')
-
     except:
-        root = tk.Tk()
-        root.withdraw()
-        messagebox.showerror("Duplicate Ingredient Name",
-                             "Duplicate Ingredient Name.\n Please try again")
+        #messagebox.showerror("Duplicate Ingredient Name",
+                            # "Duplicate Ingredient Name.\n Please try again")
         return redirect('ingredient_get')
 
+def ingredient_create_post_cauldron(request):
+    print(request.POST['potion_id'])
+    try:
+        ingredient = Ingredient.objects.create(name=request.POST['name'])
+        photo_file = request.FILES.get('photo-file', None)
+        add_photo(photo_file, ingredient.id)
+        return redirect(reverse('cauldron', kwargs={'pk': request.POST['potion_id']}))
+    except:
+        print('ERROR')
+        # root = tk.Tk()
+        # root.withdraw()
+        # root.mainloop()
+        tk.messagebox.showinfo(title= 'Duplicate ingredient',message="Duplicate Ingredient Name.\n Please try again")
+        # pymsgbox.alert("This is a message box",title="Hello World")
+        print('hi lila')
+        return redirect(reverse('ingredient_get_cauldron', kwargs={'potion_id': request.POST['potion_id']}))
 
-class IngredientCreate(LoginRequiredMixin, CreateView):
-    model = Ingredient
-    fields = '__all__'
 
 
 class PotionDelete(LoginRequiredMixin, DeleteView):
@@ -134,7 +148,7 @@ class IngredientDelete(LoginRequiredMixin, DeleteView):
 
 class PotionUpdate(LoginRequiredMixin, UpdateView):
     model = Potion
-    fields = ['name', 'purpose', 'effects', 'color']
+    fields = ['name', 'purpose', 'effects']
 
     def get_success_url(self):
         return reverse('potion_detail', kwargs={'pk': self.kwargs['pk']})

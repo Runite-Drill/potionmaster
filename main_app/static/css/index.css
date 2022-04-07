@@ -1,10 +1,11 @@
-a { 
+a {
   text-decoration: none;
   color: black;
 }
 
-.container { width: 100%}
-
+.container {
+  width: 100%;
+}
 
 body {
   background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
@@ -60,28 +61,27 @@ body {
   width: 13px;
   margin: 9em;
   /* transform: translateY(-10px) */
-}  
+}
 
-.potionName{ 
+.potionName {
   margin: 0 auto;
 }
 
-.nameAndIcon {  
+.nameAndIcon {
   display: flex;
-  flex-direction: column ; 
+  flex-direction: column;
   transform: translateY(-20px);
-  align-items: center; 
-} 
+  align-items: center;
+}
 
-.nameAndIcon2 {  
+.nameAndIcon2 {
   display: flex;
-  flex-direction: column ; 
+  flex-direction: column;
   transform: translateY(-25px);
-  align-items: center; 
-} 
+  align-items: center;
+}
 
- 
-.deleteButton { 
+.deleteButton {
   border: 1px solid black;
   width: 90px !important;
   background-color: #f14b53;
@@ -89,7 +89,7 @@ body {
   /* margin: 90px; */
   text-align: center;
   border-radius: 25%;
-  padding: 5px;   
+  padding: 5px;
 }
 
 .leftArrow {
@@ -99,41 +99,41 @@ body {
 
 .rightArrow {
   transform: translateY(-650px) translateX(1300px);
-} 
+}
 
-#bottleRow1 { 
-  transform: translateY(20px);
-} 
-
-#bottleRow2 { 
+#bottleRow1 {
   transform: translateY(20px);
 }
 
-.row1 { 
-  transform: translateX(-70px) translateY(100px);
-} 
+#bottleRow2 {
+  transform: translateY(20px);
+}
 
-.row2 { 
-  transform: translateX(-70px) translateY(180px); 
-} 
+.row1 {
+  transform: translateX(-70px) translateY(100px);
+}
+
+.row2 {
+  transform: translateX(-70px) translateY(180px);
+}
 
 .column {
-  float: left; 
+  float: left;
   display: inline-flex;
 }
 
-.left{ 
-  width: 10%; 
+.left {
+  width: 10%;
   transform: translateX(-350px) translateY(400px);
-}  
+}
 
-.right{ 
-  width: 10%;  
+.right {
+  width: 10%;
   transform: translateX(250px) translateY(-850px);
-} 
+}
 
-.middle { 
-  width: 100%; 
+.middle {
+  width: 100%;
 }
 
 /* Clear floats after the columns */

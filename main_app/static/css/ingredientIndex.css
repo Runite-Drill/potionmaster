@@ -1,4 +1,4 @@
-a { 
+a {
   text-decoration: none;
   color: black;
 }
@@ -8,7 +8,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  display: flex; 
+  display: flex;
 }
 
 .title {
@@ -32,10 +32,10 @@ body {
   transform: translateY(0px) translateX(460px);
   width: 360px !important;
   padding: none;
-  font-size: 30px; 
-}  
+  font-size: 30px;
+}
 
-#buttons { 
+#buttons {
   display: inline;
 }
 
@@ -64,8 +64,8 @@ body {
   align-items: center;
   height: 60px !important;
   border-radius: 25%;
-  padding: 5px; 
-  min-width: 100px; 
+  padding: 5px;
+  min-width: 100px;
   text-align: center;
 }
 
@@ -77,15 +77,15 @@ body {
   margin: 15px;
   /* border: 2px solid black;  */
   border-radius: 25%;
-  /* margin-bottom: 200px; */ 
+  /* margin-bottom: 200px; */
   align-items: center;
-}  
+}
 
-.ingredients { 
-  display:inline-flex;
-} 
+.ingredients {
+  display: inline-flex;
+}
 
-.potionName{ 
+.potionName {
   margin: 0 auto;
 }
 
@@ -98,23 +98,23 @@ body {
   transform: translateY(-350px) translateX(1350px);
 } */
 
-#bottleRow1 { 
-  transform: translateY(20px);
-} 
-
-#bottleRow2 { 
+#bottleRow1 {
   transform: translateY(20px);
 }
 
-.row1 { 
+#bottleRow2 {
+  transform: translateY(20px);
+}
+
+.row1 {
   transform: translateX(-15px) translateY(110px);
-} 
+}
 
-.row2 { 
+.row2 {
   transform: translateX(-15px) translateY(175px);
-} 
+}
 
-.deleteButton { 
+.deleteButton {
   border: 1px solid black;
   width: 90px !important;
   background-color: #f14b53;
@@ -122,45 +122,45 @@ body {
   /* margin: 90px; */
   text-align: center;
   border-radius: 25%;
-  padding: 5px;   
-} 
+  padding: 5px;
+}
 
-.nameAndIcon {  
+.nameAndIcon {
   display: flex;
-  flex-direction: column ; 
-  transform: translateY(-90px); 
+  flex-direction: column;
+  transform: translateY(-90px);
   align-items: center;
-} 
+}
 
-.nameAndIcon2 {  
+.nameAndIcon2 {
   display: flex;
-  flex-direction: column ; 
+  flex-direction: column;
   transform: translateY(-10px);
-  align-items: center; 
-}  
+  align-items: center;
+}
 
 .column {
-  float: left; 
+  float: left;
   display: inline-flex;
 }
 
-.left{ 
-  width: 10%; 
-  transform: translateX(-320px) translateY(180px);
-}  
+.left {
+  width: 10%;
+  transform: translateX(-320px) translateY(220px);
+}
 
-.right{ 
-  width:10%;
-  transform: translateX(220px) translateY(-780px);
-}   
+.right {
+  width: 10%;
+  transform: translateX(220px) translateY(-750px);
+}
 
-.middle { 
-  width: 100%; 
+.middle {
+  width: 100%;
 }
 
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
   content: "";
   display: table;
   clear: both;
-}
+} */

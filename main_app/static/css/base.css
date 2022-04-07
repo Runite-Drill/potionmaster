@@ -20,14 +20,18 @@ footer.page-footer {
 }
 
 nav {
-  background-color: purple;
+  background-image: url("https://media3.giphy.com/media/zW0n7AIWG4ka4/giphy.gif?cid=ecf05e473pbwf7332veepb4175uem8bwea1uhjdavqydsanc&rid=giphy.gif&ct=g");
   padding-top: 0px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
 .page-footer {
-  background-color: purple;
+  background-image: url("https://media3.giphy.com/media/zW0n7AIWG4ka4/giphy.gif?cid=ecf05e473pbwf7332veepb4175uem8bwea1uhjdavqydsanc&rid=giphy.gif&ct=g");
   padding-bottom: 20px;
   font-size: 20px;
+}
+
+#yesButton {
+  color: white;
 }

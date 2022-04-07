@@ -9,7 +9,12 @@ urlpatterns = [
          views.potion_submit, name="potion_submit"),
     # path("ingredient/create/", views.IngredientCreate.as_view(),
     #      name="ingredient_create"),
+#     path("ingredient/create/", views.ingredient_create_get, name="ingredient_get"),
     path("ingredient/create/", views.ingredient_create_get, name="ingredient_get"),
+    path("ingredient/create/<int:potion_id>", views.ingredient_create_get_cauldron, name="ingredient_get_cauldron"),
+        path("ingredient/create_submit/",
+         views.ingredient_create_post_cauldron, name="ingredient_post_cauldron"),
+    
     path("ingredient/create_submit/",
          views.ingredient_create_post, name="ingredient_post"),
     path("ingredient/detail/<int:ingredient_id>/",

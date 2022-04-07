@@ -4,25 +4,61 @@
 <h1>Add Ingredient</h1>
 {% endif %}
 
-<form action="" method="post">
-  {% csrf_token %}
-  <table>
-    {{form.as_p}}
-  </table>
-  <input
-    type="submit"
-    value="Submit"
-    class="btn-large"
-    style="
-      color: white;
-      font-family: Josefin Sans, sans-serif;
-      background-color: #ea5b6c;
-      font-size: 18px;
-    "
-  />
-  {% if object %}
-  <a href="{% url 'cauldron' %}">Cancel</a>
-  {% endif %}
-</form>
+<div class="row center">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="row center">
+      <table>
+        {{form.as_p}}
+      </table>
+    </div>
+
+    <input
+      id="yesButton"
+      type="submit"
+      style="
+        font-family: Josefin Sans, sans-serif;
+        background-color: #c04bc2;
+        font-size: 18px;
+        color: white;
+      "
+      class="waves-effect waves-light btn-large"
+    />
+
+    {% if object %}
+
+    <a href="{% url 'cauldron' %}"
+      ><button
+        class="waves-effect waves-light btn-small"
+        style="
+          font-family: Josefin Sans, sans-serif;
+          background-color: #c24b55;
+          font-size: 18px;
+          color: white;
+        "
+      >
+        Cancel
+      </button></a
+    >
+
+    {% endif %}
+  </form>
+</div>
+
+<!-- <div class="row center">
+    <a href="{% url 'potion_index' %}" style="margin: 10px"> </a>
+    <input
+      id="yesButton"
+      type="submit"
+      style="
+        font-family: Josefin Sans, sans-serif;
+        background-color: #c04bc2;
+        font-size: 18px;
+        color: white;
+      "
+      value="Yes!"
+      class="waves-effect waves-light btn-large"
+    />
+  </div> -->
 
 {% endblock %}

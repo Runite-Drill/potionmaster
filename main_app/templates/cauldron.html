@@ -74,7 +74,7 @@
       </div>
       <div id="add-ingredient-container">
         <div class="ingredient">
-          <a id="add-ingredient" href="{%url 'ingredient_get' %}" class="btn" style="color: black">
+          <a id="add-ingredient" href="{%url 'ingredient_get_cauldron' potion.id %}" class="btn" style="color: black">
             <i class="material-icons" id="ctrl-point-icon">control_point</i>
           </a>
         </div>
@@ -150,14 +150,9 @@
 
     //Set default ingredients to page
     let displayedIngredients = [0,1,2];
-    let potionIngredients = [];
     displayIngredients(displayedIngredients);
 
     function displayIngredients(indices) {
-      if (potionIngredients) {
-
-        console.log(potionIngredients)
-      }
       if (ingredients[indices[0]]) {
         i1.style.backgroundImage = "url("+ingredients[indices[0]].image+")";
         i1.innerHTML = '<h5>'+ingredients[indices[0]].name+'</h5>';
@@ -208,6 +203,7 @@
 
 
     //ADD INGREDIENTS TO POTION
+    let potionIngredients = [];
     let potionIngredients_str = [];
     i1.addEventListener("click", addIngredientToPotion);
     i2.addEventListener("click", addIngredientToPotion);
@@ -218,13 +214,9 @@
     let recipeData = document.getElementById("recipeData")
 
     function addIngredientToPotion(ev) {
-      console.log(ev.target.dataset)
-      console.log(potionIngredients)
       if (potionIngredients.length > 7 ) {
         alert("Slow down pal! There are fluctations in the time-space continuum and we don't want to overwork the temporal spirits that conjure all the goodness of our potions. \nLet's limit ourselves to a maximum of 8 ingredients per potion.");
       } else if (potionIngredients.filter(v=>{ 
-        console.log('you clicked: ' + ev.target.dataset.name)
-        console.log('in recipe: ' + v.ingredient.name)
         return ev.target.dataset.name === v.ingredient.name
       }).length > 0) {
         alert('Woah! Variety is the spice of life buddy. \nYou have already added this ingredient to the potion, why not try a different one?');
@@ -289,6 +281,15 @@
       
       function editRecipeIngredient(ev) {
         console.log('EDITING INGREDIENT!')
+        let rowNum = ev.target.parentNode.rowIndex;
+        let validEntry = false;
+        let numAdded = 0;
+        while (!validEntry) {
+          numAdded = Number(prompt('How much '+potionIngredients[rowNum-1].ingredient.name.toUpperCase()+' do you want to add?'))
+          if (numAdded == 0) {return} //cancel button
+          if (numAdded > 0) { validEntry = true} //valid number
+        potionIngredients[rowNum-1].quantity = numAdded;
+        }
       }
       
       function deleteRecipeIngredient(ev) {

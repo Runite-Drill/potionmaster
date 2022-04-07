@@ -123,7 +123,7 @@ h1 {
   font-family: "Rubik Wet Paint", cursive;
   color: purple;
   text-align: center;
-  font-size: 100px;
+  font-size: 150px;
 }
 
 #enterHut {
@@ -138,14 +138,11 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-#app-des-container {
+#app-des {
   position: relative;
-}
-
-#description-card {
-  margin: 0px;
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -90%);
+  color: white;
+  font-size: 39px;
+  font-weight: bold;
+  background-color: purple;
+  padding: 5px;
 }
