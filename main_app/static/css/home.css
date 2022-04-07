@@ -110,7 +110,7 @@
 }
 
 body {
-  background-color: #fae6b2;
+  background-color: #ebd6dd;
   z-index: 1;
 }
 
@@ -124,11 +124,7 @@ h1 {
   color: purple;
   text-align: center;
   font-size: 150px;
-}
-
-#enterHut {
-  font-size: 30px;
-  margin-top: 60%;
+  text-shadow: 5px 5px 5px white;
 }
 
 .centered {

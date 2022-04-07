@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'Potionmaster.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # delete these 3 when deploying to heroku
+        # empty strings these 3 when deploying to heroku
         'NAME': os.getenv('NAME'),
         'USER': os.getenv('USER'),
         'PASSWORD': os.getenv('PASSWORD'),

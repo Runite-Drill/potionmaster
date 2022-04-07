@@ -1,6 +1,7 @@
 a {
   text-decoration: none;
   color: black;
+
 }
 
 .container {
@@ -17,20 +18,23 @@ body {
 
 .title {
   display: "flexbox";
-  color: #dfef25;
+  /* color: rgb(172, 19, 185);  */
+  color: rgb(250, 253, 219);
+  font-weight:bold;
+  /* color: #dfef25; */
   font-size: 140px;
   text-decoration: solid;
   text-align: center;
   font-weight: bolder;
 }
 
-#createBtn {
+.createBtn {
   align-items: justify;
   text-align: center;
-  background-color: #dfef25;
+  background-color: rgb(250, 253, 219);
   border: 1px solid black;
   color: black;
-  font-weight: bold;
+  /* font-weight: bold; */
   border-radius: 10%;
   justify-items: center;
   transform: translateY(-20px) translateX(460px);
@@ -39,15 +43,24 @@ body {
   font-size: 30px;
 }
 
+#indexBtn1:hover { 
+  background-color: #ea5b6c; 
+}
+
+#indexBtn2:hover{ 
+  background-color:rgb(172, 19, 185);
+}
+
+
 .nameLabel {
-  border: 1px solid black;
-  width: 90px !important;
-  background-color: #fae6b2;
+  /* border: 1px solid black; */
+  /* width: 90px !important; */
+  /* background-color: #fae6b2; */
   /* transform: translateY(-80px) translateX(-0px); */
   /* margin: 90px; */
   align-items: center;
-  height: 60px !important;
-  border-radius: 25%;
+  /* height: 60px !important; */
+  /* border-radius: 25%; */
 }
 
 .potionName {
@@ -92,14 +105,14 @@ body {
   padding: 5px;
 }
 
-.leftArrow {
+/* .leftArrow {
   transform: translateY(240px) translateX(-300px);
   width: 25px !important;
 }
 
 .rightArrow {
-  transform: translateY(-650px) translateX(1300px);
-}
+  transform: translateY(-650px) translateX(1500px);
+} */
 
 #bottleRow1 {
   transform: translateY(20px);
@@ -110,11 +123,11 @@ body {
 }
 
 .row1 {
-  transform: translateX(-70px) translateY(100px);
+  transform: translateX(-70px) translateY(20px);
 }
 
 .row2 {
-  transform: translateX(-70px) translateY(180px);
+  transform: translateX(-70px) translateY(85px);
 }
 
 .column {
@@ -122,14 +135,14 @@ body {
   display: inline-flex;
 }
 
-.left {
+.arrowLeft {
   width: 10%;
-  transform: translateX(-350px) translateY(400px);
+  transform: translateX(-350px) translateY(320px);
 }
 
-.right {
+.arrowRight {
   width: 10%;
-  transform: translateX(250px) translateY(-850px);
+  transform: translateX(250px) translateY(-830px);
 }
 
 .middle {

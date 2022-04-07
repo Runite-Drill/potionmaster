@@ -9,20 +9,21 @@
 
 <h1 class="title">MY INGREDIENTS</h1>  
 <div id="buttons">
-  <div class="createBtn">
-    <a href="{%url 'ingredient_get'%}">Create new ingredient</a>  
+  <div class="createBtn" id="indexBtn1"> 
+    <a href="/potion/index">BACK to Potions </a> 
   </div>
-  <div class="createBtn">
-    <a href="/potion/index"> <p>BACK to Potions</p> </a> 
+  <br/> 
+  <div class="createBtn" id="indexBtn2"> 
+    <a href="{%url 'ingredient_get'%}"><p>Create new ingredient</p></a>  
   </div>
 </div>
 
 
 <div class="row"> 
 
-  <div class="column left">
+  <div class="column left arrowLeft">
     <img
-      src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
+      src="https://i.ibb.co/0DDjxpc/Screen-Shot-2022-04-07-at-6-38-09-PM-removebg-preview.png"
     /> 
   </div>
 
@@ -64,11 +65,10 @@
     </table>  
   </div>
 
-  <div class="column right">
-    <img src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png" 
+  <div class="column right arrowRight">
+    <img src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png" 
     />
   </div>
 
-
-  {% endblock %} 
 </div>
+{% endblock %} 

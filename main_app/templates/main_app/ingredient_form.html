@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% if object %}
-<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+<h1>Edit <span>{{object.name}}</span></h1>
 {% else %}
 <h1>Add Ingredient</h1>
 {% endif %}
@@ -7,36 +7,22 @@
 <div class="row center">
   <form action="" method="post">
     {% csrf_token %}
-    <div class="row center">
-      <table>
+    <table>
+      <tr>
         {{form.as_p}}
-      </table>
-    </div>
+      </tr>
+    </table>
 
     <input
       id="yesButton"
-      type="submit"
-      style="
-        font-family: Josefin Sans, sans-serif;
-        background-color: #c04bc2;
-        font-size: 18px;
-        color: white;
-      "
-      class="waves-effect waves-light btn-large"
+      type="submit acceptBtn"
+      class="waves-effect waves-light btn-large acceptBtn"
     />
 
     {% if object %}
 
     <a href="{% url 'cauldron' %}"
-      ><button
-        class="waves-effect waves-light btn-small"
-        style="
-          font-family: Josefin Sans, sans-serif;
-          background-color: #c24b55;
-          font-size: 18px;
-          color: white;
-        "
-      >
+      ><button class="waves-effect waves-light btn-small cancelBtn">
         Cancel
       </button></a
     >
@@ -44,21 +30,5 @@
     {% endif %}
   </form>
 </div>
-
-<!-- <div class="row center">
-    <a href="{% url 'potion_index' %}" style="margin: 10px"> </a>
-    <input
-      id="yesButton"
-      type="submit"
-      style="
-        font-family: Josefin Sans, sans-serif;
-        background-color: #c04bc2;
-        font-size: 18px;
-        color: white;
-      "
-      value="Yes!"
-      class="waves-effect waves-light btn-large"
-    />
-  </div> -->
 
 {% endblock %}

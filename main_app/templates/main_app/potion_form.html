@@ -5,43 +5,33 @@
   <h1>Add Potion</h1>
 </div>
 <div class="row center">
-  <h4 style="font-family: Josefin Sans, sans-serif">
+  <h4 style="font-family: Arial; color: black">
     Are you sure you want to create a new potion?
   </h4>
 </div>
 {% endif %}
-<form action="" method="post">
+<form action="" method="post" required>
   {% csrf_token %}
   <table>
     {{form.as_p}}
   </table>
   <div class="row center">
     <a href="{% url 'potion_index' %}" style="margin: 10px">
-      <button
-        class="waves-effect waves-light btn-small"
-        style="
-          font-family: Josefin Sans, sans-serif;
-          background-color: #c24b55;
-          font-size: 18px;
-          color: white;
-        "
-      >
-        Cancel
-      </button>
-    </a>
+      <a href="class="waves-effect waves-light btn-small cancelBtn">Cancel</a
+    >
     <input
       id="yesButton"
       type="submit"
-      style="
-        font-family: Josefin Sans, sans-serif;
-        background-color: #c04bc2;
-        font-size: 18px;
-        color: white;
-      "
       value="Yes!"
-      class="waves-effect waves-light btn-large"
+      class="waves-effect waves-light btn-large acceptBtn"
     />
   </div>
 </form>
+<style>
+  h4 {
+    color: black;
+    font-family: 14;
+  }
+</style>
 
 {% endblock %}

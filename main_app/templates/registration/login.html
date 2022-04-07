@@ -2,9 +2,23 @@
 
 <h1>Log In</h1>
 <form method="POST" action="{% url 'login' %}">
-  {%csrf_token%} {{form.as_p}}
+  {%csrf_token%}{{form.as_p}}
   <input type="submit" value="login" class="btn" />
   <input type="hidden" name="next" value="{{next}}" />
   <a href="{%url 'home' %}">Cancel</a>
 </form>
+
+<style>
+  label {
+    color: black;
+    font-size: 20px;
+    font-family: Arial;
+  }
+  h1,
+  a {
+    color: black;
+    font-family: Arial;
+  }
+</style>
+
 {%endblock%}

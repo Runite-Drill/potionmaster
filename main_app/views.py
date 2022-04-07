@@ -1,22 +1,18 @@
 import ast
+from unicodedata import name
 import boto3
 import uuid
-import json
 from .models import Potion, Ingredient, Recipe
-from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpRequest
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from tkinter import *
-import tkinter as tk
-from tkinter import messagebox
-
-
+import tkinter.messagebox
+from .seed import default_ingredients
 
 S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/'
 BUCKET = 'potionmaster'
@@ -24,6 +20,10 @@ BUCKET = 'potionmaster'
 
 # Create your views here.
 def home(request):
+    ingredients = Ingredient.objects.all()
+    if len(ingredients) == 0:
+        for elem in default_ingredients:
+            Ingredient.objects.create(name=elem['name'], image=elem['image'])
     return render(request, 'home.html')
 
 
@@ -54,7 +54,17 @@ def potion_index(request):
     # print(potions)
     # for pot in potions:
     #     print(pot.id)
-    return render(request, 'potion/index.html', {'potions': potions})
+    potions_forJS = Potion.objects.all()
+    potions_forJS_list = []
+    for potion in potions_forJS:
+        new_potion = {
+            "id": potion.id,
+            "name": potion.name,
+            "purpose": potion.purpose,
+            "effects": potion.effects,
+        }
+        potions_forJS_list.append(new_potion)
+    return render(request, 'potion/index.html', {'potions': potions, 'potions_forJS_list': potions_forJS_list})
 
 
 def ingredient_index(request):
@@ -101,8 +111,9 @@ class PotionCreate(LoginRequiredMixin, CreateView):
 def ingredient_create_get(request):
     return render(request, 'ingredient/create.html')
 
+
 def ingredient_create_get_cauldron(request, potion_id):
-    return render(request, 'ingredient/create_cauldron.html', {'potion_id':potion_id})
+    return render(request, 'ingredient/create_cauldron.html', {'potion_id': potion_id})
 
 
 @login_required
@@ -113,12 +124,15 @@ def ingredient_create_post(request):
         add_photo(photo_file, ingredient.id)
         return redirect('ingredient_index')
     except:
-        #messagebox.showerror("Duplicate Ingredient Name",
-                            # "Duplicate Ingredient Name.\n Please try again")
+        root = tkinter.Tk()
+        tkinter.messagebox.showerror(
+            title='Duplicate ingredient', message="Duplicate Ingredient Name.\nPlease try again")
+        root.withdraw()
+        root.mainloop()
         return redirect('ingredient_get')
 
+
 def ingredient_create_post_cauldron(request):
-    print(request.POST['potion_id'])
     try:
         ingredient = Ingredient.objects.create(name=request.POST['name'])
         photo_file = request.FILES.get('photo-file', None)
@@ -126,14 +140,13 @@ def ingredient_create_post_cauldron(request):
         return redirect(reverse('cauldron', kwargs={'pk': request.POST['potion_id']}))
     except:
         print('ERROR')
-        # root = tk.Tk()
-        # root.withdraw()
-        # root.mainloop()
-        tk.messagebox.showinfo(title= 'Duplicate ingredient',message="Duplicate Ingredient Name.\n Please try again")
-        # pymsgbox.alert("This is a message box",title="Hello World")
+        root = tkinter.Tk()
+        tkinter.messagebox.showerror(title='Duplicate ingredient',
+                                     message="Duplicate Ingredient Name.\n Please try again")
+        root.withdraw()
+        root.mainloop()
         print('hi lila')
         return redirect(reverse('ingredient_get_cauldron', kwargs={'potion_id': request.POST['potion_id']}))
-
 
 
 class PotionDelete(LoginRequiredMixin, DeleteView):
@@ -157,7 +170,7 @@ class PotionUpdate(LoginRequiredMixin, UpdateView):
 @ login_required
 def potion_submit(request, potion_id):
     # quantity comes from the frontend
-    if 'recipeData' in request.POST:
+    if request.POST['recipeData']:
         data = ast.literal_eval(request.POST['recipeData'])
         # print(request.POST['recipeData'])
         # print(type(data))
