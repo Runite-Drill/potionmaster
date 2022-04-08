@@ -16,6 +16,7 @@ python-dotenv==0.20.0
 s3transfer==0.5.2
 six==1.16.0
 sqlparse==0.4.2
+tk==0.1.0
 toml==0.10.2
 tzdata==2021.5
 urllib3==1.26.9
