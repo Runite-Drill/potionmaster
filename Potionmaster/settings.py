@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 # import django_heroku
+import django_heroku
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -73,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Potionmaster.wsgi.application'
+WSGI_APPLICATION = 'potionmaster.wsgi.application'
 
 
 # Database
@@ -134,5 +135,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
 django_heroku.settings(locals())

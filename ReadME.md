@@ -31,7 +31,7 @@ Lila: Upon the Heath.
 
 [Enter deployable link](google.ca)
 
-[Enter github code link](google.com)
+[Git Hub Code](https://github.com/Runite-Drill/potionmaster)
 
 <hr/>
 
