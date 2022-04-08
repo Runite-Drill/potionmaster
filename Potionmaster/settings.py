@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 # import django_heroku
+import django_heroku
 from pathlib import Path
 import os
 from dotenv import load_dotenv
@@ -83,9 +84,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # empty strings these 3 when deploying to heroku
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
+        'NAME': 'potionmaster',
+        'USER': 'postgres',
+        'PASSWORD': '  ',
     }
 }
 
@@ -134,5 +135,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-import django_heroku
 django_heroku.settings(locals())

@@ -10,8 +10,8 @@ from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-from tkinter import *
-import tkinter.messagebox
+# from tkinter import *
+# import tkinter.messagebox
 from .seed import default_ingredients, potion_bottles
 
 S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/'
@@ -133,11 +133,11 @@ def ingredient_create_post(request):
         add_photo(photo_file, ingredient.id)
         return redirect('ingredient_index')
     except:
-        root = tkinter.Tk()
-        tkinter.messagebox.showerror(
-            title='Duplicate ingredient', message="Duplicate Ingredient Name.\nPlease try again")
-        root.withdraw()
-        root.mainloop()
+        # root = tkinter.Tk()
+        # tkinter.messagebox.showerror(
+        # title='Duplicate ingredient', message="Duplicate Ingredient Name.\nPlease try again")
+        # root.withdraw()
+        # root.mainloop()
         return redirect('ingredient_get')
 
 
@@ -149,11 +149,11 @@ def ingredient_create_post_cauldron(request):
         return redirect(reverse('cauldron', kwargs={'pk': request.POST['potion_id']}))
     except:
         print('ERROR')
-        root = tkinter.Tk()
-        tkinter.messagebox.showerror(title='Duplicate ingredient',
-                                     message="Duplicate Ingredient Name.\n Please try again")
-        root.withdraw()
-        root.mainloop()
+        # root = tkinter.Tk()
+        # tkinter.messagebox.showerror(title='Duplicate ingredient',
+        #  message = "Duplicate Ingredient Name.\n Please try again")
+        # root.withdraw()
+        # root.mainloop()
         print('hi lila')
         return redirect(reverse('ingredient_get_cauldron', kwargs={'potion_id': request.POST['potion_id']}))
 
