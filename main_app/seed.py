@@ -19,6 +19,7 @@ default_ingredients = [
 
 
 potion_bottles = [
+    'https://i.imgur.com/P51dKQT.png',
     'https://i.ibb.co/DKFNktT/pinkpotion.png',
     'https://i.ibb.co/DGTKdkP/bluepotion.png',
     'https://i.ibb.co/dj74TPm/greenpotion.png',

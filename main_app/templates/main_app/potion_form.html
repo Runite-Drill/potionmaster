@@ -28,7 +28,8 @@
   </div>
 </form> 
 
-<button class="waves-effect waves-light btn-small cancelBtn"> <a href="/potion/index">Cancel</button></a>
+<div class="row center"
+<button class="waves-effect waves-light btn-small cancelBtn"> <a href="/potion/index">Cancel</button></a></div>
 
 <style>
   h4 {
@@ -36,5 +37,11 @@
     font-family: 14;
   }
 </style>
+
+
+<script>
+  let selectEl = document.getElementById('id_color');
+  M.FormSelect.init(selectEl); 
+</script>
 
 {% endblock %}

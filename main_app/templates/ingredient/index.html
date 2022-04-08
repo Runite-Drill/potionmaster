@@ -34,11 +34,26 @@
         {% if forloop.counter0 < 4 %}
         <td>
               <div class="nameAndIcon">
+                {% if potion.color_choices = "Pink" %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/DKFNktT/pinkpotion.png"/> 
+                {% elif potion.color_choices = "Blue" %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/DGTKdkP/bluepotion.png"/> 
+                {% elif potion.color_choices = "Green" %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/dj74TPm/greenpotion.png"/> 
+                {% elif potion.color_choices = "Red" %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/YNxF730/redpotion.png"/> 
+                {% elif potion.color_choices = "Yellow" %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/FbbXxCc/yellowpotion.png"/> 
+                {% elif potion.color_choices = "Orange" %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/b6tjYr2/orangepotion.png"/> 
+                {% else %}
+                  <img id="bottleRow1" style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
+                {% endif %}
                 <img class="ingredientPic" src="{{ingredient.image}}" />
                 <p class="nameLabel potionName" style="text-align: center">
                   {{ ingredient.name }}
                </p>
-               <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a> </div>
+               <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}"><button>Delete</button></a> </div>
              </div>
              </a>
         </td>

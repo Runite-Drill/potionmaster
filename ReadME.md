@@ -73,3 +73,5 @@ This app was built using **HTML**, **CSS**, **JavaScript**, **Python**, **NoSQL*
 - Pay for photos to remove the watermark
 - Link ingredients to users
 - Allow the user to select the color of the potion bottle or a random color
+- Clear database of potions that do not have a name
+- Add pics to recipe page
