@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'potionmaster.wsgi.application'
+WSGI_APPLICATION = 'Potionmaster.wsgi.application'
 
 
 # Database

@@ -1,1 +1,1 @@
-web: gunicorn potionmaster.wsgi
+web: gunicorn Potionmaster.wsgi
