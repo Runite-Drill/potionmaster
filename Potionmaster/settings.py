@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # empty strings these 3 when deploying to heroku
-        'NAME': os.getenv('NAME'),
-        'USER': os.getenv('USER'),
-        'PASSWORD': os.getenv('PASSWORD'),
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
     }
 }
 
