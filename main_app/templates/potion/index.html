@@ -30,7 +30,7 @@
       {% if forloop.counter0 < 4 %}
         <td data-potion="{{potion.id}}">
          <div class="potionBottlePic">
-            <a href="{% url 'potion_detail' potion.id %}">
+            <a class="potionLink" href="{% url 'potion_detail' potion.id %}">
               <div class="nameAndIcon">
                 <img id="bottleRow1" style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
                 <p class="nameLabel potionName" style="text-align: center">
@@ -50,7 +50,7 @@
         {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
           <td data-potion="{{potion.id}}">
             <div class="potionBottlePic">
-              <a href="{% url 'potion_detail' potion.id %}">
+              <a class="potionLink" href="{% url 'potion_detail' potion.id %}">
                 <div class="nameAndIcon2">
                   <img id="bottleRow2" style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
                   <p class="nameLabel potionName" style="text-align: center">
@@ -139,10 +139,6 @@
   console.log(displayedPotions)
 
   
-
-
-
-
   // displayPotions(displayedPotions);
 
   function displayPotions(indices) {
@@ -150,21 +146,14 @@
     console.log(indices)
     for (i in indices) {
       if (all_potions[indices[i]]) {
+        console.log('before: ' + allPotionEl[i].querySelector('.potionLink').href)
         allPotionEl[i].querySelector('p').innerText = all_potions[indices[i]].name;
         allPotionEl[i].querySelector('p').setAttribute(['data-potion'], all_potions[indices[i]].id);
-        allPotionEl[i].querySelector('a').href="potion/detail/"+all_potions[indices[i]].id;
-        console.log(allPotionEl[i].querySelector('a').href)
+        allPotionEl[i].querySelector('a').href="#";
+        allPotionEl[i].querySelector('a').href="/potion/detail/"+all_potions[indices[i]].id;
+        console.log('after: ' + allPotionEl[i].querySelector('.potionLink').href)
       }
     }
-
-    // if (all_potions[indices[0]]) {
-    //   i1.style.backgroundImage = "url("+all_potions[indices[0]].image+")";
-    //   i1.innerHTML = '<h5>'+all_potions[indices[0]].name+'</h5>';
-    //   i1.dataset={};
-    //   i1.dataset.id = all_potions[indices[0]].id;
-    //   i1.dataset.name = all_potions[indices[0]].name;
-    //   i1.dataset.image = all_potions[indices[0]].image;
-    // }
   }
 
   function scrollLeft(ev) {

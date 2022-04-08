@@ -12,7 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from tkinter import *
 import tkinter.messagebox
-from .seed import default_ingredients
+from .seed import default_ingredients, potion_bottles
 
 S3_BASE_URL = 'https://s3-us-west-2.amazonaws.com/'
 BUCKET = 'potionmaster'

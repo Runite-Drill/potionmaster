@@ -72,3 +72,4 @@ This app was built using **HTML**, **CSS**, **JavaScript**, **Python**, **NoSQL*
 - Potion sharing.
 - Pay for photos to remove the watermark
 - Link ingredients to users
+- Allow the user to select the color of the potion bottle or a random color
