@@ -3,36 +3,17 @@
 <h1>Delete Potion</h1>
 
 <h4>
-  Are you sure you want to delete
-  <span style="color: #ea5b6c; font-family: Josefin Sans, sans-serif">
+  Are you sure you want to delete potion
+  <span style="color: #ea5b6c; font-family: Arial, sans-serif">
     {{object.name}}</span
   >?
 </h4>
 
 <form action="" method="post">
   {% csrf_token %}
-  <input
-    type="submit"
-    value="Yes - Delete"
-    class="btn-large"
-    style="
-      font-family: Josefin Sans, sans-serif;
-      background-color: #c04bc2;
-      font-size: 18px;
-    "
-  />
+  <input type="submit" value="Yes - Delete" class="btn-large acceptBtn" />
   <a href="{% url 'potion_index' %}"
-    ><button
-      class="btn-large"
-      style="
-        color: white;
-        font-family: Josefin Sans, sans-serif;
-        background-color: #ea5b6c;
-        font-size: 18px;
-      "
-    >
-      Cancel
-    </button></a
+    ><button class="btn-large cancelBtn">Cancel</button></a
   >
 </form>
 

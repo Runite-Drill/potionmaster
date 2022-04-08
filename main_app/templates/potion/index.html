@@ -5,37 +5,41 @@
 
 <!-- <img class="bgImage" src="https://i.imgur.com/WbYiDIm.jpg" /> -->
 
-<h1 class="title">MY POTIONS</h1>
-<div id="createBtn">
-  <a href="{%url 'potion_create' %}">
-    <p>CREATE NEW</p>
-    <p></p
-  ></a>
+<h1 class="title">MY POTIONS</h1>  
+<div>
+  <a href="/ingredient/index">
+    <div class="createBtn" id="indexBtn1">SEE ALL INGREDIENTS</div>
+  </a>    
+</br>
+<a href="/potion/create">
+  <div class="createBtn" id="indexBtn2"> <p>CREATE NEW</p></div>
+</a> 
 </div>
 
 <div class="row"> 
 
-  <div class="column left">
-    <img
-      src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
+  <div class="column left arrowLeft">
+    <img id="btnLeftPot"
+      src="https://i.ibb.co/0DDjxpc/Screen-Shot-2022-04-07-at-6-38-09-PM-removebg-preview.png"
+      style="cursor: pointer"
     /> 
   </div>
-  <div class="column middle">
+  <div class="column middle" id="allPotionData" data-potions="{{potions_forJS_list}}">
     <table>
       <tr class="row1"> 
       {% for potion in potions %}
       {% if forloop.counter0 < 4 %}
-        <td>
+        <td data-potion="{{potion.id}}">
          <div class="potionBottlePic">
-            <a href="{% url 'potion_detail' potion.id %}">
-              <div class="nameAndIcon">
-                <img id="bottleRow1" style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
+            <div class="nameAndIcon">
+              <a class="potionLinkDetail" href="{% url 'potion_detail' potion.id %}">
+                <img id="bottleRow" style="height: 350px" src="{{potion.color}}" />
                 <p class="nameLabel potionName" style="text-align: center">
                   {{ potion.name }}
                 </p>
-                <div class="deleteButton"> <a href="{% url 'potion_delete' potion.id %}">Delete</a> </div>
-             </div>
-            </a>
+              </a>
+              <a href="{% url 'potion_delete' potion.id %}" class="potionLinkDelete"><div class="deleteButton"> Delete</div></a> 
+            </div>
           </div>
         </td>
       {% endif %}
@@ -45,17 +49,17 @@
       <tr class="row2">
         {% for potion in potions %}
         {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
-          <td>
+          <td data-potion="{{potion.id}}">
             <div class="potionBottlePic">
-              <a href="{% url 'potion_detail' potion.id %}">
-                <div class="nameAndIcon2">
-                  <img id="bottleRow2" style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
+              <div class="nameAndIcon2">
+                <a class="potionLinkDetail" href="{% url 'potion_detail' potion.id %}">
+                  <img id="bottleRow2" style="height: 350px" src="{{potion.color}}" />
                   <p class="nameLabel potionName" style="text-align: center">
                     {{ potion.name }}
                   </p> 
-                  <div class="deleteButton"> <a href="{% url 'potion_delete' potion.id %}">Delete</a> </div>
-                </div>
-              </a>
+                </a>
+                <a href="{% url 'potion_delete' potion.id %}" class="potionLinkDelete"><div class="deleteButton"> Delete</div></a>
+              </div>
             </div>
           </td>
         {% endif %}
@@ -64,13 +68,131 @@
     </table>   
   </div>
 
-  <div class="column right">
-    <img
-      src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png"
+  <div class="column right arrowRight">
+    <img id="btnRightPot"
+      src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png"
+      style="cursor: pointer"
     />
   </div>
 
 </div>
 
-  {% endblock %}
-</div>
+
+<script>
+  let leftBtn = document.getElementById("btnLeftPot");
+  let rightBtn = document.getElementById("btnRightPot");
+  leftBtn.addEventListener("click", scrollLeft);
+  rightBtn.addEventListener("click", scrollRight);
+
+  let potionDataContainer = document.getElementById("allPotionData");
+  let potions_raw = potionDataContainer.getAttribute(['data-potions']);
+
+  // console.log(potions_raw)
+
+  let potions_fullList = [];
+    p_split=potions_raw.split(",");
+    for (p_str of p_split) {
+      str_split=p_str.split(": ");
+      for (p2_str of str_split) {
+        p2_str = p2_str.replace("'","");
+        p2_str = p2_str.replace("'","");
+        p2_str = p2_str.replace("[","");
+        p2_str = p2_str.replace("{","");
+        p2_str = p2_str.replace("}","");
+        p2_str = p2_str.replace("]","");
+        p2_str = p2_str.trim();
+        potions_fullList.push(p2_str);
+      }
+    }
+    // console.log(potions_fullList)
+    //End array with starting key to allow parser below to successfully complete each object
+    potions_fullList.push(potions_fullList[0]);
+    //Parse the array and move key-value apirs into objects
+    let new_obj = {}
+    let all_potions = [];
+    for (i = 0; i<potions_fullList.length+1; i+=2) {
+      if ((potions_fullList[i] === potions_fullList[0]) && (i > 0)) {
+        //data keys are repeating, so begin a new object
+        all_potions.push(new_obj);
+        new_obj = {};
+      }
+      //add key and value to object
+      key=potions_fullList[i];
+      new_obj[key] = potions_fullList[i+1];
+    }
+
+    console.log(all_potions) //Now have all of the potion data
+    const NUM_POTIONS_DISPLAYED = 8 //do not change, functionality not complete. will cause a wacky webpage
+
+    all_potions.length <= NUM_POTIONS_DISPLAYED ? (leftBtn.style.display='none', rightBtn.style.display='none') : (leftBtn.style.display='block', rightBtn.style.display='block') ; //hide arrows if less than 8 potions total
+
+
+
+  let allPotionEl = document.querySelectorAll('td');
+
+  //group elements into windows panes to show only a certain number at each time
+  let count = 0;
+  let windowPane = [];
+  let pane = [];
+  for (obj of all_potions) {
+    if (count % NUM_POTIONS_DISPLAYED == 0) {
+      windowPane.push(pane);
+      pane = [];
+    }
+    pane.push(count);
+    count++;
+  }
+  windowPane.push(pane);
+
+  windowPane = windowPane.filter((v) => {
+    return v.length > 0;
+  });
+
+  let displayedWindowPane = 0; //default window pane is the first one
+
+  displayPotions(windowPane[displayedWindowPane]);
+
+  function displayPotions(indices) {
+    //display element properties within the window pane described by the indices
+    for (i in indices) {
+      allPotionEl[i].style.display = "table-cell";
+      if (all_potions[indices[i]]) {
+        allPotionEl[i].querySelector("p").innerText =
+        all_potions[indices[i]].name;
+        allPotionEl[i].querySelector("img").src =
+        all_potions[indices[i]].color;
+        allPotionEl[i].querySelector(".potionLinkDetail").href =
+          "/potion/detail/" + all_potions[indices[i]].id;
+        allPotionEl[i].querySelector(".potionLinkDelete").href =
+          "/potion/delete/" + all_potions[indices[i]].id;
+      }
+    }
+    //hide td elements on panes that are not full
+    for (i = indices.length; i < NUM_POTIONS_DISPLAYED; i++) {
+      if (allPotionEl[i]) {
+        allPotionEl[i].style.display = "none";
+      }
+    }
+  }
+
+  function scrollLeft(ev) {
+    //Change window pane one to the left
+    displayedWindowPane -= 1;
+    if (displayedWindowPane < 0) {
+      displayedWindowPane = windowPane.length - 1;
+    }
+    displayPotions(windowPane[displayedWindowPane]);
+  }
+
+  function scrollRight(ev) {
+    //Change window pane one to the right
+    displayedWindowPane += 1;
+    if (displayedWindowPane > windowPane.length - 1) {
+      displayedWindowPane = 0;
+    }
+    displayPotions(windowPane[displayedWindowPane]);
+  }
+</script>
+
+
+{% endblock %}

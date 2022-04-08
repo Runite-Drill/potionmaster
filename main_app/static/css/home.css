@@ -110,7 +110,7 @@
 }
 
 body {
-  background-color: #fae6b2;
+  background-color: #ebd6dd;
   z-index: 1;
 }
 
@@ -123,12 +123,8 @@ h1 {
   font-family: "Rubik Wet Paint", cursive;
   color: purple;
   text-align: center;
-  font-size: 100px;
-}
-
-#enterHut {
-  font-size: 30px;
-  margin-top: 60%;
+  font-size: 150px;
+  text-shadow: 5px 5px 5px white;
 }
 
 .centered {
@@ -138,14 +134,11 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
-#app-des-container {
+#app-des {
   position: relative;
-}
-
-#description-card {
-  margin: 0px;
-  position: absolute;
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, -90%);
+  color: white;
+  font-size: 39px;
+  font-weight: bold;
+  background-color: purple;
+  padding: 5px;
 }

@@ -1,10 +1,12 @@
-a { 
+a {
   text-decoration: none;
   color: black;
+
 }
 
-.container { width: 100%}
-
+.container {
+  width: 100%;
+}
 
 body {
   background-image: url("https://i.ibb.co/Kz89rj5/empty-wood-shelf-21530238.jpg");
@@ -16,20 +18,23 @@ body {
 
 .title {
   display: "flexbox";
-  color: #dfef25;
+  /* color: rgb(172, 19, 185);  */
+  color: rgb(250, 253, 219);
+  font-weight:bold;
+  /* color: #dfef25; */
   font-size: 140px;
   text-decoration: solid;
   text-align: center;
   font-weight: bolder;
 }
 
-#createBtn {
+.createBtn {
   align-items: justify;
   text-align: center;
-  background-color: #dfef25;
+  background-color: rgb(250, 253, 219);
   border: 1px solid black;
   color: black;
-  font-weight: bold;
+  /* font-weight: bold; */
   border-radius: 10%;
   justify-items: center;
   transform: translateY(-20px) translateX(460px);
@@ -38,15 +43,24 @@ body {
   font-size: 30px;
 }
 
+#indexBtn1:hover { 
+  background-color: #ea5b6c; 
+}
+
+#indexBtn2:hover{ 
+  background-color:rgb(172, 19, 185);
+}
+
+
 .nameLabel {
-  border: 1px solid black;
-  width: 90px !important;
-  background-color: #fae6b2;
+  /* border: 1px solid black; */
+  /* width: 90px !important; */
+  /* background-color: #fae6b2; */
   /* transform: translateY(-80px) translateX(-0px); */
   /* margin: 90px; */
   align-items: center;
-  height: 60px !important;
-  border-radius: 25%;
+  /* height: 60px !important; */
+  /* border-radius: 25%; */
 }
 
 .potionName {
@@ -60,28 +74,27 @@ body {
   width: 13px;
   margin: 9em;
   /* transform: translateY(-10px) */
-}  
+}
 
-.potionName{ 
+.potionName {
   margin: 0 auto;
 }
 
-.nameAndIcon {  
+.nameAndIcon {
   display: flex;
-  flex-direction: column ; 
+  flex-direction: column;
   transform: translateY(-20px);
-  align-items: center; 
-} 
+  align-items: center;
+}
 
-.nameAndIcon2 {  
+.nameAndIcon2 {
   display: flex;
-  flex-direction: column ; 
+  flex-direction: column;
   transform: translateY(-25px);
-  align-items: center; 
-} 
+  align-items: center;
+}
 
- 
-.deleteButton { 
+.deleteButton {
   border: 1px solid black;
   width: 90px !important;
   background-color: #f14b53;
@@ -89,51 +102,53 @@ body {
   /* margin: 90px; */
   text-align: center;
   border-radius: 25%;
-  padding: 5px;   
+  padding: 5px;
 }
 
-.leftArrow {
+/* .leftArrow {
   transform: translateY(240px) translateX(-300px);
   width: 25px !important;
 }
 
 .rightArrow {
-  transform: translateY(-650px) translateX(1300px);
-} 
+  transform: translateY(-650px) translateX(1500px);
+} */
 
-#bottleRow1 { 
-  transform: translateY(20px);
-} 
-
-#bottleRow2 { 
+#bottleRow1 {
   transform: translateY(20px);
 }
 
-.row1 { 
-  transform: translateX(-70px) translateY(100px);
-} 
+#bottleRow2 {
+  transform: translateY(20px);
+}
 
-.row2 { 
-  transform: translateX(-70px) translateY(180px); 
-} 
+.row1 {
+  transform: translateX(-70px) translateY(20px);
+}
+
+.row2 {
+  transform: translateX(-70px) translateY(85px);
+}
 
 .column {
-  float: left; 
+  float: left;
   display: inline-flex;
 }
 
-.left{ 
-  width: 10%; 
-  transform: translateX(-350px) translateY(400px);
-}  
+.arrowLeft {
+  width: 10%;
+  transform: translateX(-350px) translateY(320px);
+  cursor: "pointer";
+}
 
-.right{ 
-  width: 10%;  
-  transform: translateX(250px) translateY(-850px);
-} 
+.arrowRight {
+  width: 10%;
+  transform: translateX(250px) translateY(-830px);
+  cursor: "pointer";
+}
 
-.middle { 
-  width: 100%; 
+.middle {
+  width: 100%;
 }
 
 /* Clear floats after the columns */

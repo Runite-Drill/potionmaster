@@ -1,21 +1,43 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Add Ingredient</h1>
+<div class="row center">
+  <h1>Add Ingredient</h1>
+</div>
 
-<form
-  action="{% url 'ingredient_post' %}"
-  enctype="multipart/form-data"
-  method="POST"
->
-  {% csrf_token %}
-  <label> Name </label>
-  <input name="name" placeholder="Ingredient name" />
-  <br />
-  <label> Image </label>
-  <input type="file" name="photo-file" />
-  <br /><br />
-  <input type="submit" value="Submit" class="btn" />
-  <a href="{% url 'ingredient_index' %}">Cancel</a>
-</form>
+  <form
+    action="{% url 'ingredient_post' %}"
+    enctype="multipart/form-data"
+    method="POST"
+  >
+    {% csrf_token %}
+    <div class="row">
+      <label style="color: black; font-size: 30px;      font-family:Arial;"> Name </label>
+      <input name="name" placeholder="Ingredient name" style="font-family: Arial, sans-serif;color: black; font-size: 30px" />
+      <br />
+      <label style="color: black; font-size: 30px;font-family: Arial, sans-serif"> Image </label>
+    </div>
+
+    <input type="file" name="photo-file" style="font-family: Arial, sans-serif; font-size:20px;margin:20px" />
+    <br /><br />
+    <div class="row center">
+      <input
+        type="submit"
+        value="Submit"
+        class="btn btn-large purple"
+        style="color: white; font-size: 20px;background-color:purple;font-family:Arial, sans-serif;"
+      />
+      <a href="{% url 'ingredient_index' %}"><button class="waves-effect waves-light btn-small cancelBtn" style="font-family: Arial, sans-serif; ">
+        Cancel
+      </button></a>
+  </form>
+
+
+  <style>
+    h1 {
+      font-family:Arial;
+      color:black;
+    }
+  </style>
 
 {% endblock %}
+</div>

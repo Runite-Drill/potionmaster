@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Add Ingredient</h1>
+
+<form
+  action="{% url 'ingredient_post_cauldron' %}"
+  enctype="multipart/form-data"
+  method="POST"
+>
+  {% csrf_token %}
+  <label> Name </label>
+  <input name="name" placeholder="Ingredient name" />
+  <br />
+  <label> Image </label>
+  <input type="file" name="photo-file" />
+  <input type="hidden" name="potion_id" value="{{potion_id}}" />
+  <br /><br />
+  <input type="submit" value="Submit" class="btn" />
+  <a href="{% url 'ingredient_index' %}">Cancel</a>
+</form>
+
+<style>
+  h1,
+  label,
+  a {
+    font-family: Arial;
+    color: black;
+  }
+</style>
+
+{% endblock %}

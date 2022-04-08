@@ -1,13 +1,14 @@
 body {
-  background: #fae6b2;
+  /* background-color: #fae6b2; */
+  background-color: #ebd6dd;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .brand-logo {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 main {
@@ -20,14 +21,38 @@ footer.page-footer {
 }
 
 nav {
-  background-color: purple;
+  background-image: url("https://media3.giphy.com/media/zW0n7AIWG4ka4/giphy.gif?cid=ecf05e473pbwf7332veepb4175uem8bwea1uhjdavqydsanc&rid=giphy.gif&ct=g");
   padding-top: 0px;
   padding-left: 20px;
   padding-right: 20px;
+  font-size: 20px;
 }
 
 .page-footer {
-  background-color: purple;
+  background-image: url("https://media3.giphy.com/media/zW0n7AIWG4ka4/giphy.gif?cid=ecf05e473pbwf7332veepb4175uem8bwea1uhjdavqydsanc&rid=giphy.gif&ct=g");
   padding-bottom: 20px;
   font-size: 20px;
+}
+
+#yesButton {
+  color: white;
+}
+
+.cancelBtn {
+  color: white;
+  font-family: Josefin Sans, sans-serif;
+  background-color: #ea5b6c;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.acceptBtn {
+  font-family: Josefin Sans, sans-serif;
+  background-color: #c04bc2;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.input-field label {
+  color: purple;
 }

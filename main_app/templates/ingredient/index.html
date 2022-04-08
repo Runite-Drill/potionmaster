@@ -7,68 +7,181 @@
   />
 </head>
 
-<h1 class="title">MY INGREDIENTS</h1>  
+<h1 class="title">MY INGREDIENTS</h1>
 <div id="buttons">
-  <div class="createBtn">
-    <a href="{%url 'ingredient_get'%}">Create new ingredient</a>  
-  </div>
-  <div class="createBtn">
-    <a href="/potion/index"> <p>BACK to Potions</p> </a> 
-  </div>
+  <a href="/potion/index">
+    <div class="createBtn" id="indexBtn1">BACK to Potions</div>
+  </a>
+  <br />
+  <a href="{%url 'ingredient_get'%}">
+    <div class="createBtn" id="indexBtn2"><p>Create new ingredient</p></div>
+  </a>
 </div>
 
-
-<div class="row"> 
-
-  <div class="column left">
+<div class="row">
+  <div class="column left arrowLeft">
     <img
-      src="https://i.ibb.co/B26Td3m/Screen-Shot-2022-04-04-at-4-40-47-PM-removebg-preview.png"
-    /> 
-  </div>
-
-  <div class="column middle">
-    <table>
-      <tr class="row1">
-        {% for ingredient in ingredients %}
-        {% if forloop.counter0 < 4 %}
-        <td>
-              <div class="nameAndIcon">
-                <img class="ingredientPic" src="{{ingredient.image}}" />
-                <p class="nameLabel potionName" style="text-align: center">
-                  {{ ingredient.name }}
-               </p>
-               <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a> </div>
-             </div>
-             </a>
-        </td>
-        {% endif %}
-        {% endfor %}
-      </tr>
-
-      <tr class="row2">
-        {% for ingredient in ingredients %}
-        {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
-          <td>
-                <div class="nameAndIcon2">
-                  <img class="ingredientPic" src="{{ingredient.image}}" />
-                  <p class="nameLabel potionName" style="text-align: center">
-                   {{ ingredient.name }}
-                 </p> 
-                  <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a> </div>
-                </div>
-              </a>
-            </td>
-        {% endif %}
-        {% endfor %}
-      </tr> 
-    </table>  
-  </div>
-
-  <div class="column right">
-    <img src="https://i.ibb.co/B6jmWBq/Screen-Shot-2022-04-04-at-4-41-05-PM-removebg-preview.png" 
+      id="btnLeftIng"
+      src="https://i.ibb.co/0DDjxpc/Screen-Shot-2022-04-07-at-6-38-09-PM-removebg-preview.png"
+      style="cursor: pointer"
     />
   </div>
 
+  <div class="column middle">
+    <table id="allIngredientData" data-ingredients="{{ingredients_forJS_list}}">
+      <tr class="row1">
+        {% for ingredient in ingredients %} {% if forloop.counter0 < 4 %}
+        <td>
+          <div class="nameAndIcon">
+            <img class="ingredientPic" src="{{ingredient.image}}" />
+            <p class="nameLabel potionName" style="text-align: center">
+              {{ ingredient.name }}
+            </p>
+            <a href="{% url 'ingredient_delete' ingredient.id %}"
+              ><div class="deleteButton">Delete</div></a
+            >
+          </div>
+        </td>
+        {% endif %} {% endfor %}
+      </tr>
+      <tr class="row2">
+        {% for ingredient in ingredients %}
+        <div></div>
+        {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
+        <td>
+          <div class="nameAndIcon2">
+            <img class="ingredientPic" src="{{ingredient.image}}" />
+            <p class="nameLabel potionName" style="text-align: center">
+              {{ ingredient.name }}
+            </p>
+            <a href="{% url 'ingredient_delete' ingredient.id %}">
+              <div class="deleteButton">Delete</div>
+            </a>
+          </div>
+        </td>
+        {% endif %} {% endfor %}
+      </tr>
+    </table>
+  </div>
 
-  {% endblock %} 
+  <div class="column right arrowRight">
+    <img
+      id="btnRightIng"
+      src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png"
+      style="cursor: pointer"
+    />
+  </div>
 </div>
+
+<script>
+  let leftBtn = document.getElementById("btnLeftIng");
+  let rightBtn = document.getElementById("btnRightIng");
+  leftBtn.addEventListener("click", scrollLeft);
+  rightBtn.addEventListener("click", scrollRight);
+
+  let ingredientDataContainer = document.getElementById("allIngredientData");
+  let ingredients_raw = ingredientDataContainer.getAttribute([
+    "data-ingredients",
+  ]);
+
+  // console.log(ingredients_raw)
+
+  let ingredients_fullList = [];
+  i_split = ingredients_raw.split(",");
+  for (i_str of i_split) {
+    str_split = i_str.split(": ");
+    for (i2_str of str_split) {
+      i2_str = i2_str.replace("'", "");
+      i2_str = i2_str.replace("'", "");
+      i2_str = i2_str.replace("[", "");
+      i2_str = i2_str.replace("{", "");
+      i2_str = i2_str.replace("}", "");
+      i2_str = i2_str.replace("]", "");
+      i2_str = i2_str.trim();
+      ingredients_fullList.push(i2_str);
+    }
+  }
+  // console.log(ingredients_fullList)
+  //End array with starting key to allow parser below to successfully complete each object
+  ingredients_fullList.push(ingredients_fullList[0]);
+  //Parse the array and move key-value apirs into objects
+  let new_obj = {};
+  let all_ingredients = [];
+  for (i = 0; i < ingredients_fullList.length + 1; i += 2) {
+    if (ingredients_fullList[i] === ingredients_fullList[0] && i > 0) {
+      //data keys are repeating, so begin a new object
+      all_ingredients.push(new_obj);
+      new_obj = {};
+    }
+    //add key and value to object
+    key = ingredients_fullList[i];
+    new_obj[key] = ingredients_fullList[i + 1];
+  }
+
+  // console.log(all_ingredients); //Now have all of the ingredient data
+
+  const NUM_INGREDIENTS_DISPLAYED = 8; //changing this does some weird stuff, likely due to the fact that the number of td's is hardcoded into the html
+
+  all_ingredients.length <= NUM_INGREDIENTS_DISPLAYED
+    ? ((leftBtn.style.display = "none"), (rightBtn.style.display = "none"))
+    : ((leftBtn.style.display = "block"), (rightBtn.style.display = "block")); //hide arrows if less than 8 ingredients total
+
+  let allIngredientEl = document.querySelectorAll("td");
+
+  let count = 0;
+  let windowPane = [];
+  let pane = [];
+  for (obj of all_ingredients) {
+    if (count % NUM_INGREDIENTS_DISPLAYED == 0) {
+      windowPane.push(pane);
+      pane = [];
+    }
+    pane.push(count);
+    count++;
+  }
+  windowPane.push(pane);
+
+  windowPane = windowPane.filter((v) => {
+    return v.length > 0;
+  });
+
+  let displayedWindowPane = 0;
+
+  displayIngredients(windowPane[displayedWindowPane]);
+
+  function displayIngredients(indices) {
+    for (i in indices) {
+      allIngredientEl[i].style.display = "table-cell";
+      if (all_ingredients[indices[i]]) {
+        allIngredientEl[i].querySelector("p").innerText =
+          all_ingredients[indices[i]].name;
+        allIngredientEl[i].querySelector("img").src =
+          all_ingredients[indices[i]].image;
+        allIngredientEl[i].querySelector("a").href =
+          "/ingredient/delete/" + all_ingredients[indices[i]].id;
+      }
+    }
+    for (i = indices.length; i < NUM_INGREDIENTS_DISPLAYED; i++) {
+      if (allIngredientEl[i]) {
+        allIngredientEl[i].style.display = "none";
+      }
+    }
+  }
+
+  function scrollLeft(ev) {
+    displayedWindowPane -= 1;
+    if (displayedWindowPane < 0) {
+      displayedWindowPane = windowPane.length - 1;
+    }
+    displayIngredients(windowPane[displayedWindowPane]);
+  }
+
+  function scrollRight(ev) {
+    displayedWindowPane += 1;
+    if (displayedWindowPane > windowPane.length - 1) {
+      displayedWindowPane = 0;
+    }
+    displayIngredients(windowPane[displayedWindowPane]);
+  }
+</script>
+{% endblock %}

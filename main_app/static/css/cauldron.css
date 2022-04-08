@@ -1,16 +1,18 @@
-/* body {
-  background-image: url("https://i.imgur.com/xTsSfig.png");
+body {
+  background-image: url("https://p2.piqsels.com/preview/854/564/22/sunset-sunrise-purple-sky.jpg");
+  /* background-color: #ebd6dd; */
   background-size: cover;
-} */
+}
 
 h2 {
   margin-top: 0px;
-  padding-right: 10%;
+  padding-right: 5%;
+  font-family: "Arial";
 }
 
 h3 {
-  color: #ea5b6c;
-  text-shadow: 1px 1px 1px black;
+  color: black;
+  text-shadow: 1px 1px 1px #ebd6dd;
   margin-top: 5px;
   padding-right: 10%;
 }
@@ -55,7 +57,8 @@ h3 {
 #recipe-container {
   width: 25%;
   font-size: 20px;
-  background-color: #fdfcea;
+  /* background-color: #fdfcea;  */
+  background-color: #f5e6eb;
   border-radius: 20px;
   padding: 20px;
   text-align: center;
@@ -64,15 +67,22 @@ h3 {
   flex-direction: column;
   justify-content: space-between;
 }
+
 #concoctBtn {
   width: 100%;
   font-size: 20px;
-  background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif");
-  border: 2px #ea5b6c;
-  border-style: inset;
-  font-family: "Josefin Sans", sans-serif;
-  color: #ea5b6c;
+  /* background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif"); */
+  border: 2px #ebd6dd;
+  background-color: #ebd6dd;
+  border-style: outset;
+  font-family: "Arial", sans-serif;
+  color: black;
   text-shadow: 1px 1px 1px black;
+} 
+
+#concoctBtn:hover { 
+  background: rgb(172, 19, 185); 
+  color: white;
 }
 
 #empty-container {
@@ -84,11 +94,12 @@ h3 {
   display: flex;
   margin-bottom: 40px;
   justify-content: space-evenly;
-  background-color: #fdfcea;
+  /* background-color: #fdfcea;
   border-radius: 20px;
-  border: 2px solid black;
+  border: 2px solid black; */
   padding: 20px 0;
-  background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif");
+  /* background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif"); */
+  background-size: cover;
 }
 
 #add-ingredient-container {
@@ -99,12 +110,16 @@ h3 {
   justify-content: center;
 }
 
-#add-ingredient-container:hover {
-  background-color: #ea5b6c;
-}
+/* #add-ingredient-container:hover {
+  /* background-color: #ea5b6c;  */
+  /* border: 6px solid #ea5b6c;
+} */
 
 #ctrl-point-icon {
   font-size: 60px;
+  /* padding: 10px;  */
+  /* margin-bottom: 50px; */ 
+  transform: translateY(-20px);
 }
 
 .ingredient {
@@ -116,6 +131,12 @@ h3 {
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  background-color: rgb(172, 19, 185);
+}
+
+.ingredient:hover {
+  border: 6px solid rgb(199, 22, 96); 
+  background-color: rgb(199, 22, 96); 
 }
 
 .ingredient > h5 {
@@ -142,13 +163,14 @@ h3 {
 }
 
 #add-ingredient {
-  background-color: #fdfcea;
+  /* background-color: #fdfcea; */ 
+  background-color: #f5e6eb;
   font-size: 200px;
   margin-top: 50%;
   height: 100%;
   width: 100%;
   line-height: 140px;
-  border-radius: 10px;
+  border-radius: 10px;  
 }
 
 .btn {
@@ -161,18 +183,17 @@ a {
 }
 
 a:hover {
-  background-color: #ea5b6c;
-  color: black;
-  padding: 2px;
+  background-color: #ea5b6c; 
+  /* padding: 2px; */
 }
 
 .sparkle {
-  background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif");
+  /* background: url("https://media.giphy.com/media/6kkdoLdjDKUaC6JEKu/giphy.gif"); */
   padding: 10px;
-  border: 2px #ea5b6c;
-  border-style: inset;
-  font-family: "Josefin Sans", sans-serif;
-  color: #ea5b6c;
+  /* border: 2px #ebd6dd;
+  border-style: inset; */
+  font-family: "Arial", sans-serif;
+  color: black;
   text-shadow: 1px 1px 1px black;
 }
 
