@@ -6,8 +6,8 @@
 </div>
 <div class="row center">
   <h4 style="font-family: Arial; color: black">
-    {% if object %} Set the properties of this potion {% else %} Are you sure
-    you want to create a new potion? {% endif %}
+    {% if object %} What are the properties of this potion? {% else %} Are you
+    sure you want to create a new potion? {% endif %}
   </h4>
 </div>
 
@@ -17,6 +17,17 @@
   <table>
     {{form.as_p}}
   </table>
+  {% if object %}
+  <br />
+  <div class="row center" id="potionRecipe">
+    POTION INGREDIENTS {% for recipe in object.recipe_set.all %}
+    <p>{{recipe.quantity}} parts {{recipe.ingredient.name}}</p>
+    {% endfor %}
+    <br />
+    <p>INSTRUCTIONS</p>
+  </div>
+  <br /><br />
+  {% endif %}
   <div class="row center">
     <input
       id="yesButton"
@@ -26,7 +37,6 @@
     />
   </div>
 </form>
-
 <div class="row center">
   <a href="/potion/index"
     ><button class="waves-effect waves-light btn-small cancelBtn">
@@ -45,6 +55,62 @@
 <script>
   let selectEl = document.getElementById("id_color");
   M.FormSelect.init(selectEl);
+
+  //random recipe instructions
+  let recipeInstructionEl = document.getElementById("potionRecipe");
+  const RECIPEINSTRUCTIONS = [
+    "Put all ingredients in a bubbling cauldron.",
+    "Mix well for 30 minutes with the eye of a newt and a pickled wooden spoon.",
+    "Shake with lemongrass and hamster fur.",
+    "Chew on a gold coin while everything ferments.",
+    "Consume 2 glasses of wine.",
+    "Put outside for 23 days.",
+    "Feed to rabbit and collect droppings.",
+    "Kiss a frog.",
+    "Sleep.",
+    "Bake for 40 minutes at 225C.",
+    "Binge-watch Friends from start to finish.",
+    "Chop everything into squares, triangles and circles.",
+    "Recite Shakespeare over a casual lunch with friends.",
+    "Stir furiously.",
+    "Gently work out the oils and flavours.",
+    "Toss with a green salad.",
+    "Microwave for 30 seconds.",
+    "Turn halfway through cooking.",
+    "Put the dish in the centre of the oven on a baking tray.",
+    "Remove seal-proof packaging.",
+    "Ensure the product is hot.",
+    "Lick both sides.",
+    "Defrost rapidly.",
+    "Lightly shake, then heat for 2 minutes and let rest for 1 minute.",
+    "Remove plastics.",
+    "Throw away everything else.",
+    "Add salt and pepper to taste.",
+    "Resolve any issues.",
+    "Bring a medium sized pot of water to a boil over high heat.",
+    "Reserve 1 cup of pasta water and set aside.",
+    "Lightly dust the surface with flour.",
+    "Sprinkle with non-consumables.",
+    "Step on Lego until tender.",
+    "Roll into a ball and pat dry.",
+    "Mash mixture until filling is evenly combined.",
+    "Caution, hot!",
+    "Remove. Stare blankly into space.",
+  ];
+
+  let numSteps = Math.floor(Math.random() * 5 + 2);
+  let recipeInstructions = RECIPEINSTRUCTIONS;
+  for (step = 0; step < numSteps; step++) {
+    let pStep = document.createElement("p");
+    let idx = Math.floor(Math.random() * recipeInstructions.length);
+    pStep.innerText = recipeInstructions[idx];
+    recipeInstructionEl.appendChild(pStep);
+    recipeInstructions.splice(idx, 1);
+  }
+
+  let pEnd = document.createElement("p");
+  pEnd.innerText = "Serve.";
+  recipeInstructionEl.appendChild(pEnd);
 </script>
 
 {% endblock %}
