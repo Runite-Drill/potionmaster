@@ -2,7 +2,7 @@
 
 ## Andrew, Lila, Camiel and Nicole, adorned with their pointy black hats surrounding the Cauldron🧙🧙🧙🧙
 
-Camiel: When shall we three meet again?
+Camiel: When shall we four meet again?
 
 Andrew: When the hurlyburly's done.
 
@@ -29,7 +29,7 @@ Lila: Upon the Heath.
 
 <hr />
 
-[Enter deployable link](google.ca)
+[Deployable link](https://potionnmasterr.herokuapp.com/)
 
 [Git Hub Code](https://github.com/Runite-Drill/potionmaster)
 
@@ -48,15 +48,15 @@ This app was built using **HTML**, **CSS**, **JavaScript**, **Python**, **NoSQL*
 <hr />
 
 - When you first load the app, your screen will look like [this](https://imgur.com/oNx0b0J)
-- Click sign up and create an account[Sign Up Page]()
+- Click sign up and create an account [Sign Up Page](https://imgur.com/lbxmARp)
 - Login with your new account
-- Enter the Cauldron room by clicking 'Potion Master' and then 'Create Potion'[Potion Index Page](https://imgur.com/6Yk0NPq)
+- Enter the Cauldron room by clicking 'Potion Master' and then 'Create Potion' [Potion Index Page](https://imgur.com/6Yk0NPq)
 - Create a Potion (with default ingredients) or [Default Ingredients](https://imgur.com/bK0iAbJ)
 - Create your own ingredients and add them to the potion [New Ingredients](https://imgur.com/MZHXpOv)
 - Once you've added the ingredients and their respective amounts,
 - Click 'Concoct' and it will create the potion [Brew Potion](https://imgur.com/undefined)
-- Then you will have a form page, enter the 'name' of your potion, its 'effects' and the 'purpose'[Edit Potion](https://imgur.com/VBODRZq)
-- Once that is done, you will be directed to the Potion Detail page, where you can see all the details of your potion[Recipe Page](https://imgur.com/lniMOXQ)
+- Then you will have a form page, enter the 'name' of your potion, its 'effects' and the 'purpose' [Edit Potion](https://imgur.com/VBODRZq)
+- Once that is done, you will be directed to the Potion Detail page, where you can see all the details of your potion [Recipe Page](https://imgur.com/lniMOXQ)
 - From this page, you can 'Edit' or 'Delete' the potion
 - Edit will allow you to change the 'purpose', 'effects' and 'name' of the potion[Change Recipe Page](https://imgur.com/LNxua5j)
 - On the 'Potions' page, you will be able to view all your potions that you've created, and make a new one[Potion Index](https://imgur.com/6Yk0NPq)
