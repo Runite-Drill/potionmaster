@@ -7,13 +7,13 @@
 
 <h1 class="title">MY POTIONS</h1>  
 <div>
-  <div class="createBtn" id="indexBtn1">
-    <a href="/ingredient/index">SEE ALL INGREDIENTS</a> 
-  </div>    
+  <a href="/ingredient/index">
+    <div class="createBtn" id="indexBtn1">SEE ALL INGREDIENTS</div>
+  </a>    
 </br>
-  <div class="createBtn" id="indexBtn2"> 
-    <a href="/potion/create"><p>CREATE NEW</p></a> 
-  </div>
+<a href="/potion/create">
+  <div class="createBtn" id="indexBtn2"> <p>CREATE NEW</p></div>
+</a> 
 </div>
 
 <div class="row"> 
@@ -21,6 +21,7 @@
   <div class="column left arrowLeft">
     <img id="btnLeftPot"
       src="https://i.ibb.co/0DDjxpc/Screen-Shot-2022-04-07-at-6-38-09-PM-removebg-preview.png"
+      style="cursor: pointer"
     /> 
   </div>
   <div class="column middle" id="allPotionData" data-potions="{{potions_forJS_list}}">
@@ -30,15 +31,15 @@
       {% if forloop.counter0 < 4 %}
         <td data-potion="{{potion.id}}">
          <div class="potionBottlePic">
-            <a class="potionLink" href="{% url 'potion_detail' potion.id %}">
-              <div class="nameAndIcon">
-                  <img id="bottleRow" style="height: 350px" src="{{potion.color}}" />
-                  <p class="nameLabel potionName" style="text-align: center">
-                    {{ potion.name }}
-                  </p>
-                <div class="deleteButton"> <a href="{% url 'potion_delete' potion.id %}">Delete</a> </div>
-             </div>
-            </a>
+            <div class="nameAndIcon">
+              <a class="potionLinkDetail" href="{% url 'potion_detail' potion.id %}">
+                <img id="bottleRow" style="height: 350px" src="{{potion.color}}" />
+                <p class="nameLabel potionName" style="text-align: center">
+                  {{ potion.name }}
+                </p>
+              </a>
+              <a href="{% url 'potion_delete' potion.id %}" class="potionLinkDelete"><div class="deleteButton"> Delete</div></a> 
+            </div>
           </div>
         </td>
       {% endif %}
@@ -50,15 +51,15 @@
         {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
           <td data-potion="{{potion.id}}">
             <div class="potionBottlePic">
-              <a class="potionLink" href="{% url 'potion_detail' potion.id %}">
-                <div class="nameAndIcon2">
+              <div class="nameAndIcon2">
+                <a class="potionLinkDetail" href="{% url 'potion_detail' potion.id %}">
                   <img id="bottleRow2" style="height: 350px" src="{{potion.color}}" />
                   <p class="nameLabel potionName" style="text-align: center">
                     {{ potion.name }}
                   </p> 
-                  <div class="deleteButton"> <a href="{% url 'potion_delete' potion.id %}">Delete</a></div>
-                </div>
-              </a>
+                </a>
+                <a href="{% url 'potion_delete' potion.id %}" class="potionLinkDelete"><div class="deleteButton"> Delete</div></a>
+              </div>
             </div>
           </td>
         {% endif %}
@@ -70,6 +71,7 @@
   <div class="column right arrowRight">
     <img id="btnRightPot"
       src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png"
+      style="cursor: pointer"
     />
   </div>
 
@@ -120,64 +122,75 @@
     }
 
     console.log(all_potions) //Now have all of the potion data
+    const NUM_POTIONS_DISPLAYED = 8 //do not change, functionality not complete. will cause a wacky webpage
 
-    all_potions.length < 8 ? (leftBtn.style.display='none', rightBtn.style.display='none') : (leftBtn.style.display='block', rightBtn.style.display='block') ; //hide arrows if less than 8 potions total
+    all_potions.length <= NUM_POTIONS_DISPLAYED ? (leftBtn.style.display='none', rightBtn.style.display='none') : (leftBtn.style.display='block', rightBtn.style.display='block') ; //hide arrows if less than 8 potions total
 
 
 
   let allPotionEl = document.querySelectorAll('td');
-  let potionIdDisplayed = [];
-  let displayedPotions = [];
+
+  //group elements into windows panes to show only a certain number at each time
   let count = 0;
-  for (potionEL of allPotionEl) {
-    displayedPotions.push(count);
-    potionIdDisplayed.push(potionEL.getAttribute(['data-potion']));
+  let windowPane = [];
+  let pane = [];
+  for (obj of all_potions) {
+    if (count % NUM_POTIONS_DISPLAYED == 0) {
+      windowPane.push(pane);
+      pane = [];
+    }
+    pane.push(count);
     count++;
   }
+  windowPane.push(pane);
 
-  console.log(potionIdDisplayed)
-  console.log(displayedPotions)
+  windowPane = windowPane.filter((v) => {
+    return v.length > 0;
+  });
 
-  
-  // displayPotions(displayedPotions);
+  let displayedWindowPane = 0; //default window pane is the first one
+
+  displayPotions(windowPane[displayedWindowPane]);
 
   function displayPotions(indices) {
-    console.log('Displaying potions...')
-    console.log(indices)
+    //display element properties within the window pane described by the indices
     for (i in indices) {
+      allPotionEl[i].style.display = "table-cell";
       if (all_potions[indices[i]]) {
-        console.log('before: ' + allPotionEl[i].querySelector('.potionLink').href)
-        allPotionEl[i].querySelector('p').innerText = all_potions[indices[i]].name;
-        allPotionEl[i].querySelector('p').setAttribute(['data-potion'], all_potions[indices[i]].id);
-        allPotionEl[i].querySelector('a').href="#";
-        allPotionEl[i].querySelector('a').href="/potion/detail/"+all_potions[indices[i]].id;
-        console.log('after: ' + allPotionEl[i].querySelector('.potionLink').href)
+        allPotionEl[i].querySelector("p").innerText =
+        all_potions[indices[i]].name;
+        allPotionEl[i].querySelector("img").src =
+        all_potions[indices[i]].color;
+        allPotionEl[i].querySelector(".potionLinkDetail").href =
+          "/potion/detail/" + all_potions[indices[i]].id;
+        allPotionEl[i].querySelector(".potionLinkDelete").href =
+          "/potion/delete/" + all_potions[indices[i]].id;
+      }
+    }
+    //hide td elements on panes that are not full
+    for (i = indices.length; i < NUM_POTIONS_DISPLAYED; i++) {
+      if (allPotionEl[i]) {
+        allPotionEl[i].style.display = "none";
       }
     }
   }
 
   function scrollLeft(ev) {
-    console.log('left')
-    displayedPotions=displayedPotions.map(v=>{
-      v-=1;
-      if (v < 0) {
-        v = all_potions.length - 1;
-      }
-      return v
-    });
-    displayPotions(displayedPotions);
+    //Change window pane one to the left
+    displayedWindowPane -= 1;
+    if (displayedWindowPane < 0) {
+      displayedWindowPane = windowPane.length - 1;
+    }
+    displayPotions(windowPane[displayedWindowPane]);
   }
 
   function scrollRight(ev) {
-    console.log('right')
-    displayedPotions=displayedPotions.map(v=>{
-      v+=1;
-      if (v > all_potions.length - 1) {
-        v = 0;
-      }
-      return v
-    });
-    displayPotions(displayedPotions);
+    //Change window pane one to the right
+    displayedWindowPane += 1;
+    if (displayedWindowPane > windowPane.length - 1) {
+      displayedWindowPane = 0;
+    }
+    displayPotions(windowPane[displayedWindowPane]);
   }
 </script>
 

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% if object %}
+{% extends 'base.html' %} {% block content %} {% if object.name %}
 <h1>Edit <span class="teal-text">{{object.name}}</span></h1>
 {% else %}
 <div class="row center">
@@ -6,9 +6,11 @@
 </div>
 <div class="row center">
   <h4 style="font-family: Arial; color: black">
-    Are you sure you want to create a new potion?
+    {% if object %} Set the properties of this potion {% else %} Are you sure
+    you want to create a new potion? {% endif %}
   </h4>
 </div>
+
 {% endif %}
 <form action="" method="post" required>
   {% csrf_token %}
@@ -16,14 +18,12 @@
     {{form.as_p}}
   </table>
   <div class="row center">
-    <a href="{% url 'potion_index' %}" style="margin: 10px">
-      <input
-        id="yesButton"
-        type="submit"
-        value="Yes!"
-        class="waves-effect waves-light btn-large acceptBtn"
-      />
-    </a>
+    <input
+      id="yesButton"
+      type="submit"
+      value="Yes!"
+      class="waves-effect waves-light btn-large acceptBtn"
+    />
   </div>
 </form>
 

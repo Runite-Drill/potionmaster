@@ -138,11 +138,13 @@ body {
 .arrowLeft {
   width: 10%;
   transform: translateX(-350px) translateY(320px);
+  cursor: "pointer";
 }
 
 .arrowRight {
   width: 10%;
   transform: translateX(250px) translateY(-830px);
+  cursor: "pointer";
 }
 
 .middle {

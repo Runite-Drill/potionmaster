@@ -9,13 +9,13 @@
 
 <h1 class="title">MY INGREDIENTS</h1>
 <div id="buttons">
-  <div class="createBtn" id="indexBtn1">
-    <a href="/potion/index">BACK to Potions </a>
-  </div>
+  <a href="/potion/index">
+    <div class="createBtn" id="indexBtn1">BACK to Potions</div>
+  </a>
   <br />
-  <div class="createBtn" id="indexBtn2">
-    <a href="{%url 'ingredient_get'%}"><p>Create new ingredient</p></a>
-  </div>
+  <a href="{%url 'ingredient_get'%}">
+    <div class="createBtn" id="indexBtn2"><p>Create new ingredient</p></div>
+  </a>
 </div>
 
 <div class="row">
@@ -23,6 +23,7 @@
     <img
       id="btnLeftIng"
       src="https://i.ibb.co/0DDjxpc/Screen-Shot-2022-04-07-at-6-38-09-PM-removebg-preview.png"
+      style="cursor: pointer"
     />
   </div>
 
@@ -36,9 +37,9 @@
             <p class="nameLabel potionName" style="text-align: center">
               {{ ingredient.name }}
             </p>
-            <div class="deleteButton">
-              <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a>
-            </div>
+            <a href="{% url 'ingredient_delete' ingredient.id %}"
+              ><div class="deleteButton">Delete</div></a
+            >
           </div>
         </td>
         {% endif %} {% endfor %}
@@ -53,9 +54,9 @@
             <p class="nameLabel potionName" style="text-align: center">
               {{ ingredient.name }}
             </p>
-            <div class="deleteButton">
-              <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a>
-            </div>
+            <a href="{% url 'ingredient_delete' ingredient.id %}">
+              <div class="deleteButton">Delete</div>
+            </a>
           </div>
         </td>
         {% endif %} {% endfor %}
@@ -67,6 +68,7 @@
     <img
       id="btnRightIng"
       src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png"
+      style="cursor: pointer"
     />
   </div>
 </div>
@@ -116,76 +118,70 @@
     new_obj[key] = ingredients_fullList[i + 1];
   }
 
-  console.log(all_ingredients); //Now have all of the potion data
+  // console.log(all_ingredients); //Now have all of the ingredient data
 
-  all_ingredients.length < 8
+  const NUM_INGREDIENTS_DISPLAYED = 8; //changing this does some weird stuff, likely due to the fact that the number of td's is hardcoded into the html
+
+  all_ingredients.length <= NUM_INGREDIENTS_DISPLAYED
     ? ((leftBtn.style.display = "none"), (rightBtn.style.display = "none"))
-    : ((leftBtn.style.display = "block"), (rightBtn.style.display = "block")); //hide arrows if less than 8 potions total
+    : ((leftBtn.style.display = "block"), (rightBtn.style.display = "block")); //hide arrows if less than 8 ingredients total
 
   let allIngredientEl = document.querySelectorAll("td");
-  let displayedIngredients = [];
-  let count = 0;
-  for (obj of allIngredientEl) {
-    displayedIngredients.push(count);
-    count++;
-  }
 
-  let count2 = 0;
+  let count = 0;
   let windowPane = [];
   let pane = [];
   for (obj of all_ingredients) {
-    if (count2 % 8 == 0) {
+    if (count % NUM_INGREDIENTS_DISPLAYED == 0) {
       windowPane.push(pane);
       pane = [];
     }
-    pane.push(obj);
-    count2++;
+    pane.push(count);
+    count++;
   }
   windowPane.push(pane);
 
   windowPane = windowPane.filter((v) => {
     return v.length > 0;
   });
-  console.log(windowPane);
 
-  console.log(displayedIngredients);
+  let displayedWindowPane = 0;
 
-  // displayIngredients(displayedIngredients);
+  displayIngredients(windowPane[displayedWindowPane]);
 
   function displayIngredients(indices) {
     for (i in indices) {
+      allIngredientEl[i].style.display = "table-cell";
       if (all_ingredients[indices[i]]) {
         allIngredientEl[i].querySelector("p").innerText =
           all_ingredients[indices[i]].name;
         allIngredientEl[i].querySelector("img").src =
           all_ingredients[indices[i]].image;
-      } else {
-        allIngredientEl[i].querySelector("p").innerText = "";
-        allIngredientEl[i].querySelector("img").src = "";
+        allIngredientEl[i].querySelector("a").href =
+          "/ingredient/delete/" + all_ingredients[indices[i]].id;
+      }
+    }
+    for (i = indices.length; i < NUM_INGREDIENTS_DISPLAYED; i++) {
+      if (allIngredientEl[i]) {
+        allIngredientEl[i].style.display = "none";
       }
     }
   }
 
   function scrollLeft(ev) {
-    displayedIngredients = displayedIngredients.map((v) => {
-      v -= 1;
-      if (v < 0) {
-        v = all_ingredients.length - 1;
-      }
-      return v;
-    });
-    displayIngredients(displayedIngredients);
+    displayedWindowPane -= 1;
+    if (displayedWindowPane < 0) {
+      displayedWindowPane = windowPane.length - 1;
+    }
+    displayIngredients(windowPane[displayedWindowPane]);
   }
 
   function scrollRight(ev) {
-    displayedIngredients = displayedIngredients.map((v) => {
-      v += 1;
-      if (v > all_ingredients.length - 1) {
-        v = 0;
-      }
-      return v;
-    });
-    displayIngredients(displayedIngredients);
+    displayedWindowPane += 1;
+    if (displayedWindowPane > windowPane.length - 1) {
+      displayedWindowPane = 0;
+    }
+    displayIngredients(windowPane[displayedWindowPane]);
   }
 </script>
 {% endblock %}

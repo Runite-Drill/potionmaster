@@ -162,11 +162,13 @@ body {
 .arrowLeft {
   width: 10%;
   transform: translateX(-200px) translateY(150px);
+  cursor: "pointer";
 }
 
 .arrowRight {
   width: 10%;
   transform: translateX(160px) translateY(-700px);
+  cursor: "pointer";
 }
 
 .middle {

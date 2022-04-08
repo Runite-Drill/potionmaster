@@ -62,6 +62,7 @@ def potion_index(request):
             "name": potion.name,
             "purpose": potion.purpose,
             "effects": potion.effects,
+            "color": potion.color,
         }
         potions_forJS_list.append(new_potion)
     return render(request, 'potion/index.html', {'potions': potions, 'potions_forJS_list': potions_forJS_list})
