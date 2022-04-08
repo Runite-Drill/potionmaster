@@ -69,7 +69,15 @@ def potion_index(request):
 
 def ingredient_index(request):
     ingredients = Ingredient.objects.all()
-    return render(request, 'ingredient/index.html', {'ingredients': ingredients})
+    ingredient_list = []
+    for ingredient in ingredients:
+        new_ingredient = {
+            "id": ingredient.id,
+            "name": ingredient.name,
+            "image": ingredient.image,
+        }
+        ingredient_list.append(new_ingredient)
+    return render(request, 'ingredient/index.html', {'ingredients': ingredients, 'ingredients_forJS_list': ingredient_list})
 
 
 @login_required
@@ -161,7 +169,7 @@ class IngredientDelete(LoginRequiredMixin, DeleteView):
 
 class PotionUpdate(LoginRequiredMixin, UpdateView):
     model = Potion
-    fields = ['name', 'purpose', 'effects']
+    fields = ['name', 'purpose', 'effects', 'color']
 
     def get_success_url(self):
         return reverse('potion_detail', kwargs={'pk': self.kwargs['pk']})

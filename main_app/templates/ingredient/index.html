@@ -7,83 +7,185 @@
   />
 </head>
 
-<h1 class="title">MY INGREDIENTS</h1>  
+<h1 class="title">MY INGREDIENTS</h1>
 <div id="buttons">
-  <div class="createBtn" id="indexBtn1"> 
-    <a href="/potion/index">BACK to Potions </a> 
+  <div class="createBtn" id="indexBtn1">
+    <a href="/potion/index">BACK to Potions </a>
   </div>
-  <br/> 
-  <div class="createBtn" id="indexBtn2"> 
-    <a href="{%url 'ingredient_get'%}"><p>Create new ingredient</p></a>  
+  <br />
+  <div class="createBtn" id="indexBtn2">
+    <a href="{%url 'ingredient_get'%}"><p>Create new ingredient</p></a>
   </div>
 </div>
 
-
-<div class="row"> 
-
+<div class="row">
   <div class="column left arrowLeft">
     <img
+      id="btnLeftIng"
       src="https://i.ibb.co/0DDjxpc/Screen-Shot-2022-04-07-at-6-38-09-PM-removebg-preview.png"
-    /> 
-  </div>
-
-  <div class="column middle">
-    <table>
-      <tr class="row1">
-        {% for ingredient in ingredients %}
-        {% if forloop.counter0 < 4 %}
-        <td>
-              <div class="nameAndIcon">
-                {% if potion.color_choices = "Pink" %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/DKFNktT/pinkpotion.png"/> 
-                {% elif potion.color_choices = "Blue" %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/DGTKdkP/bluepotion.png"/> 
-                {% elif potion.color_choices = "Green" %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/dj74TPm/greenpotion.png"/> 
-                {% elif potion.color_choices = "Red" %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/YNxF730/redpotion.png"/> 
-                {% elif potion.color_choices = "Yellow" %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/FbbXxCc/yellowpotion.png"/> 
-                {% elif potion.color_choices = "Orange" %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.ibb.co/b6tjYr2/orangepotion.png"/> 
-                {% else %}
-                  <img id="bottleRow1" style="height: 350px" src="https://i.imgur.com/P51dKQT.png" />
-                {% endif %}
-                <img class="ingredientPic" src="{{ingredient.image}}" />
-                <p class="nameLabel potionName" style="text-align: center">
-                  {{ ingredient.name }}
-               </p>
-               <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}"><button>Delete</button></a> </div>
-             </div>
-             </a>
-        </td>
-        {% endif %}
-        {% endfor %}
-      </tr>
-
-      <tr class="row2">
-        {% for ingredient in ingredients %}
-        {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
-          <td>
-                <div class="nameAndIcon2">
-                  <img class="ingredientPic" src="{{ingredient.image}}" />
-                  <p class="nameLabel potionName" style="text-align: center">
-                   {{ ingredient.name }}
-                 </p> 
-                  <div class="deleteButton"> <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a> </div>
-                </div>
-              </a>
-            </td>
-        {% endif %}
-        {% endfor %}
-      </tr> 
-    </table>  
-  </div>
-
-  <div class="column right arrowRight">
-    <img src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png" 
     />
   </div>
 
+  <div class="column middle">
+    <table id="allIngredientData" data-ingredients="{{ingredients_forJS_list}}">
+      <tr class="row1">
+        {% for ingredient in ingredients %} {% if forloop.counter0 < 4 %}
+        <td>
+          <div class="nameAndIcon">
+            <img class="ingredientPic" src="{{ingredient.image}}" />
+            <p class="nameLabel potionName" style="text-align: center">
+              {{ ingredient.name }}
+            </p>
+            <div class="deleteButton">
+              <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a>
+            </div>
+          </div>
+        </td>
+        {% endif %} {% endfor %}
+      </tr>
+      <tr class="row2">
+        {% for ingredient in ingredients %}
+        <div></div>
+        {% if forloop.counter0 < 8 and forloop.counter0 > 3 %}
+        <td>
+          <div class="nameAndIcon2">
+            <img class="ingredientPic" src="{{ingredient.image}}" />
+            <p class="nameLabel potionName" style="text-align: center">
+              {{ ingredient.name }}
+            </p>
+            <div class="deleteButton">
+              <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a>
+            </div>
+          </div>
+        </td>
+        {% endif %} {% endfor %}
+      </tr>
+    </table>
+  </div>
+
+  <div class="column right arrowRight">
+    <img
+      id="btnRightIng"
+      src="https://i.ibb.co/FqNRmSX/Screen-Shot-2022-04-07-at-6-38-20-PM-removebg-preview.png"
+    />
+  </div>
 </div>
-{% endblock %} 
+
+<script>
+  let leftBtn = document.getElementById("btnLeftIng");
+  let rightBtn = document.getElementById("btnRightIng");
+  leftBtn.addEventListener("click", scrollLeft);
+  rightBtn.addEventListener("click", scrollRight);
+
+  let ingredientDataContainer = document.getElementById("allIngredientData");
+  let ingredients_raw = ingredientDataContainer.getAttribute([
+    "data-ingredients",
+  ]);
+
+  // console.log(ingredients_raw)
+
+  let ingredients_fullList = [];
+  i_split = ingredients_raw.split(",");
+  for (i_str of i_split) {
+    str_split = i_str.split(": ");
+    for (i2_str of str_split) {
+      i2_str = i2_str.replace("'", "");
+      i2_str = i2_str.replace("'", "");
+      i2_str = i2_str.replace("[", "");
+      i2_str = i2_str.replace("{", "");
+      i2_str = i2_str.replace("}", "");
+      i2_str = i2_str.replace("]", "");
+      i2_str = i2_str.trim();
+      ingredients_fullList.push(i2_str);
+    }
+  }
+  // console.log(ingredients_fullList)
+  //End array with starting key to allow parser below to successfully complete each object
+  ingredients_fullList.push(ingredients_fullList[0]);
+  //Parse the array and move key-value apirs into objects
+  let new_obj = {};
+  let all_ingredients = [];
+  for (i = 0; i < ingredients_fullList.length + 1; i += 2) {
+    if (ingredients_fullList[i] === ingredients_fullList[0] && i > 0) {
+      //data keys are repeating, so begin a new object
+      all_ingredients.push(new_obj);
+      new_obj = {};
+    }
+    //add key and value to object
+    key = ingredients_fullList[i];
+    new_obj[key] = ingredients_fullList[i + 1];
+  }
+
+  console.log(all_ingredients); //Now have all of the potion data
+
+  all_ingredients.length < 8
+    ? ((leftBtn.style.display = "none"), (rightBtn.style.display = "none"))
+    : ((leftBtn.style.display = "block"), (rightBtn.style.display = "block")); //hide arrows if less than 8 potions total
+
+  let allIngredientEl = document.querySelectorAll("td");
+  let displayedIngredients = [];
+  let count = 0;
+  for (obj of allIngredientEl) {
+    displayedIngredients.push(count);
+    count++;
+  }
+
+  let count2 = 0;
+  let windowPane = [];
+  let pane = [];
+  for (obj of all_ingredients) {
+    if (count2 % 8 == 0) {
+      windowPane.push(pane);
+      pane = [];
+    }
+    pane.push(obj);
+    count2++;
+  }
+  windowPane.push(pane);
+
+  windowPane = windowPane.filter((v) => {
+    return v.length > 0;
+  });
+  console.log(windowPane);
+
+  console.log(displayedIngredients);
+
+  // displayIngredients(displayedIngredients);
+
+  function displayIngredients(indices) {
+    for (i in indices) {
+      if (all_ingredients[indices[i]]) {
+        allIngredientEl[i].querySelector("p").innerText =
+          all_ingredients[indices[i]].name;
+        allIngredientEl[i].querySelector("img").src =
+          all_ingredients[indices[i]].image;
+      } else {
+        allIngredientEl[i].querySelector("p").innerText = "";
+        allIngredientEl[i].querySelector("img").src = "";
+      }
+    }
+  }
+
+  function scrollLeft(ev) {
+    displayedIngredients = displayedIngredients.map((v) => {
+      v -= 1;
+      if (v < 0) {
+        v = all_ingredients.length - 1;
+      }
+      return v;
+    });
+    displayIngredients(displayedIngredients);
+  }
+
+  function scrollRight(ev) {
+    displayedIngredients = displayedIngredients.map((v) => {
+      v += 1;
+      if (v > all_ingredients.length - 1) {
+        v = 0;
+      }
+      return v;
+    });
+    displayIngredients(displayedIngredients);
+  }
+</script>
+{% endblock %}

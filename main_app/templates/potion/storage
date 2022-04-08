@@ -88,3 +88,20 @@
     <div class="col s3">row</div>
   </div>
 </div>
+
+<tr class="row2">
+  {% for ingredient in ingredients %} {% if forloop.counter0 < 8 and
+  forloop.counter0 > 3 %}
+  <td>
+    <div class="nameAndIcon2">
+      <img class="ingredientPic" src="{{ ingredient.image }}" />
+      <p class="nameLabel potionName" style="text-align: center">
+        {{ ingredient.name }}
+      </p>
+      <div class="deleteButton">
+        <a href="{% url 'ingredient_delete' ingredient.id %}">Delete</a>
+      </div>
+    </div>
+  </td>
+  {% endif %} {% endfor %}
+</tr>
